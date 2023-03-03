@@ -53,8 +53,8 @@ if ($_POST['username'] != "" && $_POST['password'] != "") {
 	$tpl->newBlock("FORM");
 
 
-	CheckLogin($_COOKIE[$cookie_name]);
+	//CheckLogin($_COOKIE[$cookie_name]);
 }
 
-$tpl->assign("_ROOT.page_title", "ระบบบริหารงานบริษัทฯ");
+$tpl->assign("_ROOT.page_title", "ระบบจัดการข้อมูล");
 $tpl->printToScreen();
