@@ -25,7 +25,7 @@ $tpl->assign("_ROOT.fullname",$_SESSION['FULLNAME']);
 
 
 
-$TodayThaiShow = ThaiToday($strDateTime, $tnow);
+//$TodayThaiShow = ThaiToday($strDateTime, $tnow);
 
 /*
 $query	= "SELECT * FROM `tb_task_all` WHERE `STATUS`='Show' ORDER BY `ID` DESC";
