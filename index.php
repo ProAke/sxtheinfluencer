@@ -1,3 +1,6 @@
-<?
+<?php 
 
-echo "Welcome";?>
+header ('location: authentication/index.php');
+exit();
+
+?>
