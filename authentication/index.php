@@ -43,7 +43,7 @@ if ($_POST['username'] != "" && $_POST['password'] != "") {
 		$tpl->newBlock("ERROR");
 		$tpl->assign("strMessage", "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง");
 		$tpl->newBlock("FORM");
-		/CheckLogin($_COOKIE[$cookie_name]);
+		//CheckLogin($_COOKIE[$cookie_name]);
 	}
 } else {
 
