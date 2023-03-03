@@ -15,10 +15,10 @@ $Powerby 	= "อ.พี่เอก";
 
 // Database 
 $db_config = array(
-	"host" => "203.151.157.19",
-	"user" => "playco_md",
-	"pass" => "Mbf7MmIy1oOulR",
-	"dbname" => "playco_monday",
+	"host" => "27.254.145.139",
+	"user" => "sxthein_db",
+	"pass" => "Kd206d7@x",
+	"dbname" => "sxthein_db",
 	"charset" => "utf8"
 );
 
