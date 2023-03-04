@@ -1,9 +1,9 @@
 <?php error_reporting(E_ALL ^ E_NOTICE);
 /*****************************************************************
-Created :28/02/2565
+Created :04/03/2565
 Author : worapot pilabut (aj.ake)
 E-mail : worapot.playdigital@gmail.com
-Website : https://conenct.playdigital.co.th
+Website : https://www.playdigital.co.th
 Copyright (C) 2023, Play digital Co.,Ltd. all rights reserved.
  *****************************************************************/
 
@@ -27,53 +27,7 @@ $tpl->assign("_ROOT.fullname",$_SESSION['FULLNAME']);
 
 //$TodayThaiShow = ThaiToday($strDateTime, $tnow);
 
-/*
-$query	= "SELECT * FROM `tb_task_all` WHERE `STATUS`='Show' ORDER BY `ID` DESC";
-$result	= mysql_query($query);
-while($line = mysql_fetch_array($result)) {
 $tpl->newBlock("WORKLIST");
-
-
-
-$tpl->assign("img",$line["THUMB"]);
-
-
-
-
-}
-*/
-
-
-$token = 'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjIzNzY5NDQyMCwidWlkIjozODkxNzU1MSwiaWFkIjoiMjAyMy0wMi0xNlQwNjo1NDowOS4wODFaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTUwMTIxNTUsInJnbiI6InVzZTEifQ.BAOQ1KXPUW3rdfwiBdZLmdBnMfTie1YUCUoHGOEkwPc';
-$apiUrl = 'https://api.monday.com/v2';
-$headers = ['Content-Type: application/json', 'Authorization: ' . $token];
-$query = '{ boards { id name } }';
-$data = @file_get_contents($apiUrl, false, stream_context_create([
-    'http' => [
-        'method' => 'POST',
-        'header' => $headers,
-        'content' => json_encode(['query' => $query]),
-    ]
-]));
-$array = json_decode($data, true);
-foreach ($array['data']['boards'] as $board) {
-
-    $tpl->newBlock("WORKLIST");
-    $tpl->assign("title","<a href='board.php?board_id=".$board['id']."'>".$board['id']." ".$board['name']."</a>");
-   // echo "<tr> <td>" . $board['id'] . "</td> <td>" . $board['name'] . "</td> </tr>";
-
-
-
-}
-
-
-
-
-
-
-
-
-
 
 
 
