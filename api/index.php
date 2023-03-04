@@ -28,7 +28,7 @@ switch($method) {
         $stmt = $conn->prepare($sql);
 
         $created_at = date('Y-m-d');
-        $stmt->bindParam(':datav', $user);
+        $stmt->bindParam(':datav', $user->datav);
         $stmt->bindParam(':created_at', $created_at);
 /*
         $sql = "INSERT INTO tb_app_form(id, name, email, mobile, created_at) VALUES(null, :name, :email, :mobile, :created_at)";
