@@ -24,14 +24,17 @@ switch($method) {
         break;
     case "POST":
         $user = json_decode( file_get_contents('php://input') );
-        $sql = "INSERT INTO tb_app_form(id, data) VALUES(null, :data)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':data', $user);
-
-/*
-        $sql = "INSERT INTO tb_app_form(id, name, email, mobile, created_at) VALUES(null, :name, :email, :mobile, :created_at)";
+        $sql = "INSERT INTO tb_app_form(id, TeamName, created_at) VALUES(null, :TeamName, :created_at)";
         $stmt = $conn->prepare($sql);
         $created_at = date('Y-m-d');
+        $stmt->bindParam(':TeamName', $user->TeamName);
+        $stmt->bindParam(':created_at', $created_at);        
+       // $sql = "INSERT INTO tb_app_form(id, name, email, mobile, created_at) VALUES(null, :name, :email, :mobile, :created_at)";
+
+
+
+/*
+        
         $stmt->bindParam(':name', $user->name);
         $stmt->bindParam(':email', $user->email);
         $stmt->bindParam(':mobile', $user->mobile);
