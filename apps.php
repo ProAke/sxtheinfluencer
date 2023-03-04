@@ -24,6 +24,11 @@ switch($method) {
         break;
     case "POST":
         $user = json_decode( file_get_contents('php://input') );
+        $sql = "INSERT INTO tb_app_form(id, data) VALUES(null, :data)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':data', $user);
+
+/*
         $sql = "INSERT INTO tb_app_form(id, name, email, mobile, created_at) VALUES(null, :name, :email, :mobile, :created_at)";
         $stmt = $conn->prepare($sql);
         $created_at = date('Y-m-d');
@@ -31,6 +36,9 @@ switch($method) {
         $stmt->bindParam(':email', $user->email);
         $stmt->bindParam(':mobile', $user->mobile);
         $stmt->bindParam(':created_at', $created_at);
+*/
+
+
 
         if($stmt->execute()) {
             $response = ['status' => 1, 'message' => 'Record created successfully.'];

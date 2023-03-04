@@ -1,12 +1,18 @@
 <?php
 	/**
 	* Database Connection
+
+    	"host" => "27.254.145.139",
+	"user" => "sxthein_db",
+	"pass" => "Kd206d7@x",
+	"dbname" => "sxthein_db",
+	"charset" => "utf8"
 	*/
 	class DbConnect {
 		private $server = 'localhost';
-		private $dbname = 'react_crud';
-		private $user = 'root';
-		private $pass = '';
+		private $dbname = 'sxthein_db';
+		private $user = 'sxthein_db';
+		private $pass = 'Kd206d7@x';
 
 		public function connect() {
 			try {
