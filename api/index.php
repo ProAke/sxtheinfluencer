@@ -26,8 +26,10 @@ switch($method) {
         $user = json_decode( file_get_contents('php://input') );
         $sql = "INSERT INTO tb_app_form(id, data) VALUES(null, :data)";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':data', $user);
 
+        $created_at = date('Y-m-d');
+        $stmt->bindParam(':data', $user->data);
+        $stmt->bindParam(':created_at', $created_at);
 /*
         $sql = "INSERT INTO tb_app_form(id, name, email, mobile, created_at) VALUES(null, :name, :email, :mobile, :created_at)";
         $stmt = $conn->prepare($sql);
