@@ -27,7 +27,7 @@ $tpl->assign("_ROOT.fullname",$_SESSION['FULLNAME']);
 
 //$TodayThaiShow = ThaiToday($strDateTime, $tnow);
 
-$tpl->newBlock("WORKLIST");
+$tpl->newBlock("DATA");
 
 
 
