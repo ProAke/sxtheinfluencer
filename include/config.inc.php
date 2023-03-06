@@ -58,7 +58,7 @@ if ($iPod || $iPhone) {
 	//were a webOS device -- do something here
 }
 if ($status == true) {
-	//	header( 'Location: https://pajaree.uarea.in/' ) ;
+	//	header( 'Location: https://www.sxtheinfluencer.com/application/' ) ;
 }
 
 // Display Error ,0=none display,1=display

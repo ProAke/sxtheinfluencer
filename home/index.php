@@ -22,8 +22,7 @@ $tpl->prepare();
 $tpl->assign("_ROOT.page_title", "หน้าแรก");
 $tpl->assign("_ROOT.logo_brand_alt", $Brand);
 $tpl->assign("_ROOT.fullname",$_SESSION['FULLNAME']);
-
-
+$tpl->assign("_ROOT.avatar","../static/avatars/".$_SESSION['AVATAR']);
 
 //$TodayThaiShow = ThaiToday($strDateTime, $tnow);
 

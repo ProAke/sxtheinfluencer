@@ -17,14 +17,28 @@ if ($_POST['username'] != "" && $_POST['password'] != "") {
 	if ($result->num_rows == 1) {
 
 		$line = $result->fetch_assoc();
-		$_SESSION['USERNAME'] = $line['USERNAME'];
-		$_SESSION['PASSWORD'] = $line['PASSWORD'];
-		$_SESSION['FULLNAME'] = $line['FULLNAME'];
+	
+		$_SESSION['USERNAME'] 	= $line['USERNAME'];
+		$_SESSION['PASSWORD'] 	= $line['PASSWORD'];
+		$_SESSION['PIN'] 		= $line['PIN'];
+		$_SESSION['USER_ID'] 	= $line['USER_ID'];
+		$_SESSION['EMAIL'] 		= $line['EMAIL'];
+		$_SESSION['NAME'] 		= $line['NAME'];
+		$_SESSION['FULLNAME'] 	= $line['FULLNAME'];
+		$_SESSION['NICK_NAME']	= $line['NICK_NAME'];
+		$_SESSION['PHONE'] 		= $line['PHONE'];
+		$_SESSION['LINE_ID'] 	= $line['LINE_ID'];
+		$_SESSION['LINEKEY'] 	= $line['LINEKEY'];
+		$_SESSION['FACEBOOK'] 	= $line['FACEBOOK'];
 		$_SESSION['PRIVILEGES'] = $line['PRIVILEGES'];
+		$_SESSION['AVATAR'] 	= $line['AVATAR'];
 		$_SESSION['LAST_LOGIN'] = $line['LAST_LOGIN'];
-		$_SESSION['THUMB'] = $line['THUMB'];
-		$_SESSION['ADMIN_NAME'] = $line['NAME'];
-		$_SESSION['ID'] = $line['ID'];
+		$_SESSION['COUNT'] 		= $line['COUNT'];
+		$_SESSION['STATUS'] 	= $line['TATUS'];
+		$_SESSION['LEVEL'] 		= $line['LEVEL'];
+		
+
+
 
 		// Update Last Login
 		$query = "UPDATE `$tableAdmin` SET `LAST_LOGIN`=NOW(),`COUNT`=`COUNT`+1 WHERE `USERNAME`='{$_POST['username']}' && `PASSWORD`='{$_POST['password']}'";
