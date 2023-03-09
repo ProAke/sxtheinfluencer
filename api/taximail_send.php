@@ -7,18 +7,25 @@ if($result['status'] == 'success'){
 
 
 //------------- foreach ---------------------------------
+$i = 1;
+for ($i=1; $i <= 10 ; $i++ ){
 
+
+$FName[$i] = $_POST['T'.$i.'FName'];
+$LName[$i] = $_POST['T'.$i.'LName'];
+$Email[$i] = $_POST['T'.$i.'Email'];
+ if ($Email[$i] != "") {
 	$session_id = $result['data']['session_id'];
 	$message_id = "";
 	$param = array();
 	$param['priority'] = "1"; // ความสำคัญของ email : 0 = ปกติ , 1 = สูง
 	$param['from_name'] = ""; // ชื่อผู้ส่ง หากไม่มี ใส่ค่าว่าง
 	$param['from_email'] = ""; // ** อีเมลล์ผู้ส่ง
-	$param['to_name'] = "worapot"; 
-	$param['to_email'] = "worapot@outlook.com";
+	$param['to_name'] = $FName[$i]." ".$LName[$i]; 
+	$param['to_email'] = $Email[$i];
     /* กรณีส่งแบบ TEMPLATE KEY */
     $param['template_key'] = "159026409b53464fa0"; // template id ที่ต้องการส่ง
-    $param['content_html'] = '{"Firstname":"วรพจน์","Lastname":"พิลาบุตร"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
+    $param['content_html'] = '{"Firstname":"'.$FName[$i].'","Lastname":"'.$LName[$i].'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
 	$param['transactional_group_name'] = "MUSTER"; // ชื่อของกลุ่ม transactional ลักษณะคล้ายกับ ชื่อของ campaign
 	$param['message_id'] = genMessageID($message_id);
 	$param['report_type'] = "False"; // โหมด report จำเป็นต้องใส่ web service ที่ เว็บไซท์ https://app2.taximail.com/app/user/system/ : False = ปิดโหมดรีพอร์ต , Unique = รีพอร์ตเฉพาะข้อมูลที่ ยูนิค , Full = รีพอร์ตทุกข้อมูล
@@ -38,14 +45,17 @@ if($result['status'] == 'success'){
     //if(count($attachment_field) > 0) {
     //    $param['attachment'] = json_encode($attachment_field);
     //}
-
+  
 	$result = sendTransactional($param);
-
+  
 //----------------------------------------------
+	//echo json_encode($result); 
+    $session_id="";
+
+    }
+}
 
 
-
-	echo json_encode($result);
 }else{
 	echo "Login Failed!! : ".$result['ErrorMessage'];
 }
