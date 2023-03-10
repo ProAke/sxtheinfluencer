@@ -18,8 +18,8 @@ $TeamName = $_POST['TeamName'];
 $ProjectName = $_POST['ProjectName'];
 */
 
-$TeamName = "Team A";
-$ProjectName = "Project A";
+$TeamName = "Team :".$_POST['TeamName'];
+$ProjectName = "Project :".$_POST['ProjectName'];
 $T1FName = $_POST['T1FName'];
 $T1LName = $_POST['T1LName'];
 $T1NickName = $_POST['T1NickName'];
@@ -348,8 +348,9 @@ $query = "INSERT INTO `tb_app_form`($strFieldTmp) VALUES($strValueTmp)";
 $result = $conn->query($query);
 
 
-
-echo "OK";
+if($result){
+    echo "200";
+}
 
 
 ?>
