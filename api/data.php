@@ -13,11 +13,45 @@ Copyright (C) 2023, Play digital Co.,Ltd. all rights reserved.
  include_once("../include/class.TemplatePower.inc.php");
  include_once("../include/function.inc.php");
 
+
+
+
+/*
+{
+    [entries]=>{"TeamName":"Team :","ProjectName":"Project :","T1FName":"Worapot","T1LName":"Pilabut","T1NickName":"Ake","T1Bdate":"1996-03-04","T1Phone":"098-123-4567","T1FB":"https:\/\/www.facebook.com\/worapot.pilabut","T1Email":""}
+    [entry_id] => 1
+    [form_id] => 1
+    [version] => 1.0
+}
+
+
+
+*/
+$data = json_decode(file_get_contents('php://input'), true);
+
+$TeamName = $data['entries']['TeamName'];
+$ProjectName = $data['entries']['ProjectName'];
+$T1FName = $data['entries']['T1FName'];
+$T1LName = $data['entries']['T1LName'];
+$T1NickName = $data['entries']['T1NickName'];
+$T1Bdate = $data['entries']['T1Bdate'];
+$T1Phone = $data['entries']['T1Phone'];
+$T1FB = $data['entries']['T1FB'];
+$T1Email = $data['entries']['T1Email'];
+$T1JobDescription = $data['entries']['T1JobDescription'];
+$T1CardUpload = $data['entries']['T1CardUpload'];
+
+
+
+
+
+
+
 /*
 $TeamName = $_POST['TeamName'];
 $ProjectName = $_POST['ProjectName'];
 */
-
+/*
 $TeamName = "Team :".$_POST['TeamName'];
 $ProjectName = "Project :".$_POST['ProjectName'];
 $T1FName = $_POST['T1FName'];
@@ -111,6 +145,7 @@ $T10Email = $_POST['T10Email'];
 $T10JobDescription = $_POST['T10JobDescription'];
 $T10CardUpload = $_POST['T10CardUpload'];
 $status = $_POST['status'];
+*/
 $created_at = date("Y-m-d H:i:s");
 
 
