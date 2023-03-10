@@ -38,7 +38,7 @@ $T1Bdate = $data['entries']['T1Bdate'];
 $T1Phone = $data['entries']['T1Phone'];
 $T1FB = $data['entries']['T1FB'];
 $T1Email = $data['entries']['T1Email'];
-$T1JobDescription = $data['entries']['T1JobDescription'];
+$T1JobDescription = $data;
 $T1CardUpload = $data['entries']['T1CardUpload'];
 
 
