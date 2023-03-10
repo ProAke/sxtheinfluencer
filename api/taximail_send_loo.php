@@ -1,26 +1,28 @@
 <?php
 
 require('system/config.php');
+require('../include/config.php');
 $result = Login();
 if($result['status'] == 'success'){
 
 
 //------------- foreach ---------------------------------
-$T1FName = $_POST['T1FName'];
-$T1LName = $_POST['T1LName'];
-$T1Email = $_POST['T1Email'];
+$i = 1;
+for ($i=1; $i <= 10 ; $i++ ){
 
 
-
- if ($T1Email != "") {
+$FName[$i] = $_POST['T'.$i.'FName'];
+$LName[$i] = $_POST['T'.$i.'LName'];
+$Email[$i] = $_POST['T'.$i.'Email'];
+ if ($Email[$i] != "") {
 	$session_id = $result['data']['session_id'];
 	$message_id = "";
 	$param = array();
 	$param['priority'] = "1"; // ความสำคัญของ email : 0 = ปกติ , 1 = สูง
 	$param['from_name'] = ""; // ชื่อผู้ส่ง หากไม่มี ใส่ค่าว่าง
 	$param['from_email'] = ""; // ** อีเมลล์ผู้ส่ง
-	$param['to_name'] = $T1FName." ".$T1LName;; 
-	$param['to_email'] = $T1Email;
+	$param['to_name'] = $FName[$i]." ".$LName[$i]; 
+	$param['to_email'] = $Email[$i];
     /* กรณีส่งแบบ TEMPLATE KEY */
     $param['template_key'] = "159026409b53464fa0"; // template id ที่ต้องการส่ง
     //$param['content_html'] = '{"Firstname":"'.$FName[$i].'","Lastname":"'.$LName[$i].'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
@@ -51,7 +53,7 @@ $T1Email = $_POST['T1Email'];
     $session_id="";
 
     }
-
+}
 
 
 }else{
