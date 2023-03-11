@@ -18,8 +18,8 @@ $agreement3 = $data['agreement3'];
 $T1CardUpload = $data['file_uploads']['T1CardUpload'][0]['url'];
 
 $myfile = fopen("db.txt", "w") or die("Unable to open file!");
-fwrite($myfile, $TeamName);
-fwrite($myfile, $ProjectName);
+fwrite($myfile, $_REQUEST);';
+fwrite($myfile, $data);
 fclose($myfile);
 
 
