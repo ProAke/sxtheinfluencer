@@ -8,6 +8,7 @@ foreach($_REQUEST as $key => $value) {
     if(!empty($value)) {
         $mydata = $mydata.$key . ' : ' . $value . '\n';
     }
+
 }
 
 $myfile = fopen("db.txt", "w") or die("Unable to open file!");
