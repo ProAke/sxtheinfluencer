@@ -6,11 +6,14 @@ header("Content-Type: application/json; charset=UTF-8");
 $mydata = '';
 foreach($_REQUEST as $key => $value) {
     if(!empty($value)) {
-        $mydata .= $key . ' : ' . $value . '\n';
-        if($key=='TeamName'){ $TeamName = $value; }
+        $mydata .= $key . ' : ' . $value ;
+        
     }
 
 }
+
+$TeamName = $mydata['entries']['TeamName']."-----------";
+
 
 $myfile = fopen("db.txt", "w") or die("Unable to open file!");
 fwrite($myfile, $mydata);
