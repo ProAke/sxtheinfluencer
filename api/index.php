@@ -16,5 +16,3 @@ fclose($myfile);
 echo "200";
 
 ?>
-
-?>
