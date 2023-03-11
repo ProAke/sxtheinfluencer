@@ -12,7 +12,7 @@ foreach($_REQUEST as $key => $value) {
 
 }
 
-$TeamName = $mydata['entries']['TeamName']."-----------";
+$TeamName = $_REQUEST['TeamName'];
 
 
 $myfile = fopen("db.txt", "w") or die("Unable to open file!");
