@@ -1,4 +1,25 @@
 <?php
+้header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+header("Content-Type: application/json; charset=UTF-8");
+
+$mydata = '';
+foreach($_REQUEST as $key => $value) {
+    if(!empty($value)) {
+        $mydata .= $key . ' : ' . $value . '\n';
+    }
+}
+
+$myfile = fopen("db.txt", "w") or die("Unable to open file!");
+fwrite($myfile, $mydata);
+fclose($myfile);
+
+echo "200";
+
+
+/*
+
 include 'DbConnect.php';
 $objDb = new DbConnect;
 $conn = $objDb->connect();
@@ -33,15 +54,15 @@ switch($method) {
 
 
 
-/*
+
         
-        $stmt->bindParam(':name', $user->name);
-        $stmt->bindParam(':email', $user->email);
-        $stmt->bindParam(':mobile', $user->mobile);
-        $stmt->bindParam(':created_at', $created_at);
-*/
+//       $stmt->bindParam(':name', $user->name);
+//       $stmt->bindParam(':email', $user->email);
+//       $stmt->bindParam(':mobile', $user->mobile);
+//       $stmt->bindParam(':created_at', $created_at);
 
 
+/*
 
         if($stmt->execute()) {
             $response = ['status' => 1, 'message' => 'Record created successfully.'];
@@ -87,5 +108,5 @@ switch($method) {
 
         
 }
-
+*/
 ?>
