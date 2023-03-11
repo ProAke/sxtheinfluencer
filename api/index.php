@@ -5,7 +5,7 @@ header("Content-Type: application/json; charset=UTF-8");
 $mydata = '';
 foreach($_REQUEST as $key => $value) {
     if(!empty($value)) {
-        $mydata .= $key . ' : ' . $value . '\n';
+        $mydata = $mydata.$key . ' : ' . $value . '\n';
     }
 }
 
@@ -14,5 +14,7 @@ fwrite($myfile, $mydata);
 fclose($myfile);
 
 echo "200";
+
+?>
 
 ?>
