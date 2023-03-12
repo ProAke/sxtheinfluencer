@@ -11,16 +11,17 @@ include_once("../include/function.inc.php");
 
 
 $data = $_REQUEST;
-$TeamName = $_REQUEST['TeamName'];
-//$t1JobDescription = $entries['T1JobDescription'];
+$TeamName0 = $_REQUEST[0]['TeamName'];
+$TeamName1 = $_REQUEST[1]['TeamName'];
+$TeamName2 = $_REQUEST[2]['TeamName'];
 $created_at = date("Y-m-d H:i:s");
 
 
 
 $arrData = array();
 
-$arrData['datas']     = $data."<-";
-$arrData['TeamName']     = $TeamName."<-";
+$arrData['datas']     = $data;
+$arrData['TeamName']     = $TeamName0."-1".$TeamName1."-2".$TeamName2";
 $arrData['status']      = 0;
 $arrData['created_at']   = $created_at;
 foreach ($arrData as $key => $value) {
