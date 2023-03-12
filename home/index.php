@@ -50,8 +50,9 @@ $query = "SELECT * FROM `tb_app_form` WHERE `status`='0' ORDER BY `created_at` D
 $result = $conn->query($query);
 while( $line = $result->fetch_assoc()){
     $tpl->newBlock("DATA");
-    $tpl->assign("datas", $Pline['datas']);
+    $tpl->assign("datas", $line['datas']);
     $tpl->assign("TeamName", $line['TeamName']);
+    $tpl->assign("ProjectName", $line['ProjectName']);  
     $tpl->assign("RegisterDate", $line['created_at']);
     $tpl->assign("id", $line['id']);
 
