@@ -132,7 +132,7 @@ $T10CardUpload = $dataArray['T10CardUpload'];
 
 $created_at = date("Y-m-d H:i:s");
 $arrData = array();
-$arrData['datas']           = $data2."#".$data3;
+$arrData['datas']           = $data0."#".$data2."#".$data3;
 $arrData['TeamName']        = $TeamName;
 $arrData['ProjectName']     = $ProjectName;
 $arrData['T1FName']         = $T1FName;
