@@ -19,8 +19,8 @@ $created_at = date("Y-m-d H:i:s");
 
 $arrData = array();
 
-$arrData['datas']     = $data;
-$arrData['TeamName']     = $TeamName;
+$arrData['datas']     = $data."<-";
+$arrData['TeamName']     = $TeamName."<-";
 $arrData['status']      = 0;
 $arrData['created_at']   = $created_at;
 foreach ($arrData as $key => $value) {
