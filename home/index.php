@@ -26,7 +26,21 @@ $tpl->assign("_ROOT.avatar","../static/avatars/".$_SESSION['AVATAR']);
 
 //$TodayThaiShow = ThaiToday($strDateTime, $tnow);
 
-$tpl->newBlock("DATA");
+
+
+
+$query = "SELECT * FROM `tb_app_form` WHERE `status`='0' ORDER BY `created_at` DESC LIMIT 0,1000";
+$result = $conn->query($query);
+while( $line = $result->fetch_assoc()){
+    $tpl->newBlock("DATA");
+    $tpl->assign("data", $Pline['datas']);
+    $tpl->assign("TeamName", $line['TeamName']);
+    $tpl->assign("created_at", $line['created_at']);
+    $tpl->assign("id", $line['id']);
+
+}
+
+
 
 
 
