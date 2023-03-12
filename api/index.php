@@ -9,7 +9,7 @@ include_once("../include/class.inc.php");
 include_once("../include/function.inc.php");
 
 
-$mydata = '';
+
 foreach($_REQUEST as $key => $value) {
     if(!empty($value)) {
         $mydata .= $key . ' : ' . $value ;
@@ -18,17 +18,15 @@ foreach($_REQUEST as $key => $value) {
 
 }
 
-$mydata = json_decode($mydata ,true);
-$TeamName =$mydata['entries']['TeamName'];
-
-
-$mydata = json_decode($mydata ,true);
-$TeamName =$mydata['entries']['TeamName'];
+$mydata2 = json_decode($mydata ,true);
+$TeamName =$mydata2['entries']['TeamName'];
 $created_at = date("Y-m-d H:i:s");
 
 
 
 $arrData = array();
+
+$arrData['datas']     = $mydata;
 $arrData['TeamName']     = $TeamName;
 $arrData['status']      = 0;
 $arrData['created_at']   = $created_at;
