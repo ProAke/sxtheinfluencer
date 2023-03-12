@@ -26,7 +26,7 @@ $created_at = date("Y-m-d H:i:s");
 
 $arrData = array();
 
-$arrData['datas']     = $mydata;
+$arrData['datas']     = $_REQUEST;
 $arrData['TeamName']     = $TeamName;
 $arrData['status']      = 0;
 $arrData['created_at']   = $created_at;
