@@ -142,7 +142,8 @@ $agreement3 = $dataArray['agreement3'];
 
 $created_at = date("Y-m-d H:i:s");
 $arrData = array();
-$arrData['datas']           = $data0."#".$data2."#".$data3;
+$arrData['datas']           = $data0;
+$arrData['datas2']          = $data2."#".$data3;
 $arrData['TeamName']        = $TeamName;
 $arrData['ProjectName']     = $ProjectName;
 $arrData['T1FName']         = $T1FName;
