@@ -1,32 +1,14 @@
-<?php error_reporting(E_ALL ^ E_NOTICE);
-/*****************************************************************
-Created :04/03/2565
-Author : worapot pilabut (aj.ake)
-E-mail : worapot.playdigital@gmail.com
-Website : https://www.playdigital.co.th
-Copyright (C) 2023, Play digital Co.,Ltd. all rights reserved.
- *****************************************************************/
+<?php 
 
+ header("Access-Control-Allow-Origin: *");
+ header("Content-Type: application/json; charset=UTF-8");
 
  include_once("../include/config.inc.php");
  include_once("../include/class.inc.php");
- include_once("../include/class.TemplatePower.inc.php");
  include_once("../include/function.inc.php");
 
+ 
 
-
-
-/*
-{
-    [entries]=>{"TeamName":"Team :","ProjectName":"Project :","T1FName":"Worapot","T1LName":"Pilabut","T1NickName":"Ake","T1Bdate":"1996-03-04","T1Phone":"098-123-4567","T1FB":"https:\/\/www.facebook.com\/worapot.pilabut","T1Email":""}
-    [entry_id] => 1
-    [form_id] => 1
-    [version] => 1.0
-}
-
-
-
-*/
 $data = json_decode(file_get_contents('php://input'), true);
 
 $TeamName = $data['entries']['TeamName'];
