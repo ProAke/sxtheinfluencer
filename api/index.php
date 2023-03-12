@@ -21,6 +21,9 @@ foreach($_REQUEST as $key => $value) {
         if($i==2){
             $data2 = $key.$value;
         }
+        if($i==3){
+            $data3 = $key.$value;
+        }
     }
     $i++;
 }
@@ -129,7 +132,7 @@ $T10CardUpload = $dataArray['T10CardUpload'];
 
 $created_at = date("Y-m-d H:i:s");
 $arrData = array();
-$arrData['datas']           = $data0;
+$arrData['datas']           = $data2."#".$data3;
 $arrData['TeamName']        = $TeamName;
 $arrData['ProjectName']     = $ProjectName;
 $arrData['T1FName']         = $T1FName;
