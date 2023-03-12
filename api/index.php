@@ -11,7 +11,7 @@ include_once("../include/function.inc.php");
 
 
 $data = $_REQUEST;
-$TeamName = $_REQUEST[1];
+$TeamName = $_REQUEST[0]['TeamName'];
 $created_at = date("Y-m-d H:i:s");
 
 
