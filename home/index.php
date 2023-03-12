@@ -41,8 +41,7 @@ if($_GET['action'] == "delete" && $_GET['id'] != ""){
 	$tpl->newBlock("REMOVE");
 }
 
-
-
+// Show Data
 
 
 
@@ -52,7 +51,16 @@ while( $line = $result->fetch_assoc()){
     $tpl->newBlock("DATA");
     $tpl->assign("datas", $line['datas']);
     $tpl->assign("TeamName", $line['TeamName']);
-    $tpl->assign("ProjectName", $line['ProjectName']);  
+    $tpl->assign("ProjectName", $line['ProjectName']);
+    $tpl->assign("T1FName", $line['T1FName']);
+    $tpl->assign("T1LName", $line['T1LName']);
+    $tpl->assign("T1NickName", $line['T1NickName']);
+    $tpl->assign("T1Bdate", $line['T1Bdate']);
+    $tpl->assign("T1Phone", $line['T1Phone']);
+    $tpl->assign("T1FB", $line['T1FB']);
+    $tpl->assign("T1Email", $line['T1Email']);
+    $tpl->assign("T1JobDescription", $line['T1JobDescription']);
+    $tpl->assign("T1CardUpload", $line['T1CardUpload']);
     $tpl->assign("RegisterDate", $line['created_at']);
     $tpl->assign("id", $line['id']);
 

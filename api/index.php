@@ -14,7 +14,7 @@ $data = $_REQUEST;
 $i=1;
 foreach($_REQUEST as $key => $value) {
     if(!empty($value)) {
-        $data .= $key . ' : ' . $value . '\n';
+        $data0 .= $key.$value . '\n';
         if($i==1){
             $data1 = $key.$value;
         }
@@ -27,6 +27,8 @@ foreach($_REQUEST as $key => $value) {
 
 $jsonString = substr($data1, strpos($data1, '{'), strrpos($data1, '}') - strpos($data1, '{') + 1);
 $dataArray = json_decode($jsonString, true);
+
+
 $TeamName = $dataArray['TeamName'];
 $ProjectName = $dataArray['ProjectName'];
 $TeamName = "Team :".$dataArray['TeamName'];
@@ -129,20 +131,20 @@ $T10CardUpload = $dataArray['T10CardUpload'];
 
 $created_at = date("Y-m-d H:i:s");
 $arrData = array();
-$arrData['datas']     = $data;
-$arrData['TeamName']     = $TeamName;
+$arrData['datas']           = $data0;
+$arrData['TeamName']        = $TeamName;
 $arrData['ProjectName']     = $ProjectName;
-$arrData['T1FName']     = $T1FName;
-$arrData['T1LName']     = $T1LName;
-$arrData['T1NickName']     = $T1NickName;
-$arrData['T1Bdate']     = $T1Bdate;
-$arrData['T1Phone']     = $T1Phone;
-$arrData['T1FB']     = $T1FB;
-$arrData['T1Email']     = $T1Email;
+$arrData['T1FName']         = $T1FName;
+$arrData['T1LName']         = $T1LName;
+$arrData['T1NickName']      = $T1NickName;
+$arrData['T1Bdate']         = $T1Bdate;
+$arrData['T1Phone']         = $T1Phone;
+$arrData['T1FB']            = $T1FB;
+$arrData['T1Email']         = $T1Email;
 $arrData['T1JobDescription']     = $T1JobDescription;
-$arrData['T1CardUpload']     = $T1CardUpload;
-$arrData['status']      = 0;
-$arrData['created_at']   = $created_at;
+$arrData['T1CardUpload']    = $T1CardUpload;
+$arrData['status']          = 0;
+$arrData['created_at']      = $created_at;
 foreach ($arrData as $key => $value) {
     $arrFieldTmp[] = "`$key`";
     $arrValueTmp[] = "'$value'";
