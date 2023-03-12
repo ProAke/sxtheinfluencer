@@ -10,20 +10,8 @@ include_once("../include/function.inc.php");
 
 
 
-foreach($_REQUEST as $key => $value) {
-    if(!empty($value)) {
-        $data .= $key . ' : ' . $value ;
-        
-    }
-
-}
-
-
-
-// Extract the "entries" object from the data
-preg_match('/"entries"\\s*:\\s*({[^}]+})/', $data, $matches);
-$entries = json_decode($matches[1], true);
-$TeamName = $entries['TeamName'];
+$data = $_REQUEST;
+$TeamName = $_REQUEST['TeamName'];
 //$t1JobDescription = $entries['T1JobDescription'];
 $created_at = date("Y-m-d H:i:s");
 
