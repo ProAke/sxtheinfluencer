@@ -20,13 +20,16 @@ foreach($_REQUEST as $key => $value) {
 
 $mydata2 = json_decode($mydata ,true);
 $TeamName =$mydata2['entries']['TeamName'];
+
+$t1 =$_REQUEST[0]['TeamName'];
+$t2   = json_decode($_REQUEST, true);
 $created_at = date("Y-m-d H:i:s");
 
 
 
 $arrData = array();
 
-$arrData['datas']     = $_REQUEST;
+$arrData['datas']     = $t2."------------".$t1;
 $arrData['TeamName']     = $TeamName;
 $arrData['status']      = 0;
 $arrData['created_at']   = $created_at;
