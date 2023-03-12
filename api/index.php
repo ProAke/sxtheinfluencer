@@ -16,24 +16,32 @@ foreach($_REQUEST as $key => $value) {
     if(!empty($value)) {
         $data .= $key . ' : ' . $value . '\n';
         if($i==1){
-            $TeamName = "1-".$key.$value;
+            $data1 = $key.$value;
         }
         if($i==2){
-            $TeamName = $TeamName."-2-".$key.$value;
+            $data2 = $key.$value;
         }
     }
     $i++;
 }
 
 
+
+$jsonString = substr($data1, strpos($data1, '{'), strrpos($data1, '}') - strpos($data1, '{') + 1);
+// Convert the string to an array
+$dataArray = json_decode($jsonString, true);
+$TeamName = $dataArray['TeamName'];
+
+
+
 $created_at = date("Y-m-d H:i:s");
 
-
+$TeamName2 = "-2-".$_REQUEST['entries']['TeamName'];
 
 $arrData = array();
 
 $arrData['datas']     = $data;
-$arrData['TeamName']     = $TeamName;
+$arrData['TeamName']     = $TeamName.$TeamName2;
 $arrData['status']      = 0;
 $arrData['created_at']   = $created_at;
 foreach ($arrData as $key => $value) {
