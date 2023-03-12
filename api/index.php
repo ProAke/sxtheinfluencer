@@ -12,24 +12,28 @@ include_once("../include/function.inc.php");
 
 foreach($_REQUEST as $key => $value) {
     if(!empty($value)) {
-        $mydata .= $key . ' : ' . $value ;
+        $data .= $key . ' : ' . $value ;
         
     }
 
 }
 
-$mydata2 = json_decode($mydata ,true);
-$TeamName =$mydata2['entries']['TeamName'];
 
-$t1 =$_REQUEST[0]['TeamName'];
-$t2   = json_decode($_REQUEST, true);
+
+// Extract the "entries" object from the data
+preg_match('/"entries"\\s*:\\s*({[^}]+})/', $data, $matches);
+$entries = json_decode($matches[1], true);
+
+// Extract the "TeamName" and "T1JobDescription" values
+$TeamName = $entries['TeamName'];
+//$t1JobDescription = $entries['T1JobDescription'];
 $created_at = date("Y-m-d H:i:s");
 
 
 
 $arrData = array();
 
-$arrData['datas']     = $t2."------------".$t1;
+$arrData['datas']     = $data;
 $arrData['TeamName']     = $TeamName;
 $arrData['status']      = 0;
 $arrData['created_at']   = $created_at;
