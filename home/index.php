@@ -16,17 +16,6 @@ include_once("../authentication/check_login.php");
 
 $tbAppform = "tb_app_form";
 
-
-
-
-
-
-
-
-
-
-
-
 $tpl = new TemplatePower("../template/_tp_inner.html");
 $tpl->assignInclude("body", "_tp_index.html");
 $tpl->prepare();
@@ -41,14 +30,14 @@ $tpl->assign("_ROOT.avatar","../static/avatars/".$_SESSION['AVATAR']);
 // Update Status
 if($_GET['action'] == "change" && $_GET['id'] != ""){
 	$query = "UPDATE `$tbAppform` SET `status`='{$_GET['show']}' WHERE `ID`='{$_GET['id']}' ";
-	$result = mysql_query($query);
+	$result = $conn->query($query);
 	$tpl->newBlock("SAVE");
 }
 
 // Delete
 if($_GET['action'] == "delete" && $_GET['id'] != ""){
 	$query = "DELETE FROM `$tbAppform` WHERE `id`='{$_GET['id']}' ";
-	$result = mysql_query($query);
+    $result = $conn->query($query);
 	$tpl->newBlock("REMOVE");
 }
 
