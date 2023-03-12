@@ -126,6 +126,16 @@ $T10FB = $dataArray['T10FB'];
 $T10Email = $dataArray['T10Email'];
 $T10JobDescription = $dataArray['T10JobDescription'];
 $T10CardUpload = $dataArray['T10CardUpload'];
+/*rule1
+rule2
+agreement2
+agreement3
+*/
+$rule1 = $dataArray['rule1'];
+$rule2 = $dataArray['rule2'];
+$agreement2 = $dataArray['agreement2'];
+$agreement3 = $dataArray['agreement3'];
+
 
 
 
@@ -233,7 +243,10 @@ $arrData['T10FB']           = $T10FB;
 $arrData['T10Email']        = $T10Email;
 $arrData['T10JobDescription']  = $T10JobDescription;
 $arrData['T10CardUpload']   = $T10CardUpload;
-
+$arrData['rule1']           = $rule1;
+$arrData['rule2']           = $rule2;
+$arrData['agreement2']      = $agreement2;
+$arrData['agreement3']      = $agreement3;
 $arrData['status']          = 0;
 $arrData['created_at']      = $created_at;
 foreach ($arrData as $key => $value) {
