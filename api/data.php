@@ -32,8 +32,6 @@ $T1CardUpload = $data['entries']['T1CardUpload'];
 /*
 $TeamName = $_POST['TeamName'];
 $ProjectName = $_POST['ProjectName'];
-*/
-/*
 $TeamName = "Team :".$_POST['TeamName'];
 $ProjectName = "Project :".$_POST['ProjectName'];
 $T1FName = $_POST['T1FName'];
