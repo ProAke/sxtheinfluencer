@@ -23,8 +23,6 @@ foreach($_REQUEST as $key => $value) {
 // Extract the "entries" object from the data
 preg_match('/"entries"\\s*:\\s*({[^}]+})/', $data, $matches);
 $entries = json_decode($matches[1], true);
-
-// Extract the "TeamName" and "T1JobDescription" values
 $TeamName = $entries['TeamName'];
 //$t1JobDescription = $entries['T1JobDescription'];
 $created_at = date("Y-m-d H:i:s");
