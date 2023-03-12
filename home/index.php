@@ -14,6 +14,17 @@ include_once("../include/class.TemplatePower.inc.php");
 include_once("../include/function.inc.php");
 include_once("../authentication/check_login.php");
 
+$tbAppform = "tb_app_form";
+
+
+
+
+
+
+
+
+
+
 
 
 $tpl = new TemplatePower("../template/_tp_inner.html");
@@ -27,6 +38,23 @@ $tpl->assign("_ROOT.avatar","../static/avatars/".$_SESSION['AVATAR']);
 //$TodayThaiShow = ThaiToday($strDateTime, $tnow);
 
 
+// Update Status
+if($_GET['action'] == "change" && $_GET['id'] != ""){
+	$query = "UPDATE `$tbAppform` SET `status`='{$_GET['show']}' WHERE `ID`='{$_GET['id']}' ";
+	$result = mysql_query($query);
+	$tpl->newBlock("SAVE");
+}
+
+// Delete
+if($_GET['action'] == "delete" && $_GET['id'] != ""){
+	$query = "DELETE FROM `$tbAppform` WHERE `id`='{$_GET['id']}' ";
+	$result = mysql_query($query);
+	$tpl->newBlock("REMOVE");
+}
+
+
+
+
 
 
 $query = "SELECT * FROM `tb_app_form` WHERE `status`='0' ORDER BY `created_at` DESC LIMIT 0,1000";
@@ -35,7 +63,7 @@ while( $line = $result->fetch_assoc()){
     $tpl->newBlock("DATA");
     $tpl->assign("data", $Pline['datas']);
     $tpl->assign("TeamName", $line['TeamName']);
-    $tpl->assign("created_at", $line['created_at']);
+    $tpl->assign("RegisterDate", $line['created_at']);
     $tpl->assign("id", $line['id']);
 
 }
