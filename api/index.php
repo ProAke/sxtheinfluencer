@@ -11,7 +11,7 @@ include_once("../include/function.inc.php");
 
 
 $data = $_REQUEST;
-$TeamName = $_REQUEST[0]['TeamName'];
+$TeamName = $_REQUEST[0]['TeamName'].$_REQUEST[1]['TeamName'].$_REQUEST[2]['TeamName'];
 $created_at = date("Y-m-d H:i:s");
 
 
@@ -19,7 +19,7 @@ $created_at = date("Y-m-d H:i:s");
 $arrData = array();
 
 $arrData['datas']     = $data;
-$arrData['TeamName']   = $TeamName;
+$arrData['TeamName']     = $TeamName;
 $arrData['status']      = 0;
 $arrData['created_at']   = $created_at;
 foreach ($arrData as $key => $value) {
