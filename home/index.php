@@ -52,15 +52,20 @@ while( $line = $result->fetch_assoc()){
     $tpl->assign("datas", $line['datas']);
     $tpl->assign("TeamName", $line['TeamName']);
     $tpl->assign("ProjectName", $line['ProjectName']);
-    $tpl->assign("T1FName", $line['T1FName']);
-    $tpl->assign("T1LName", $line['T1LName']);
-    $tpl->assign("T1NickName", $line['T1NickName']);
-    $tpl->assign("T1Bdate", $line['T1Bdate']);
-    $tpl->assign("T1Phone", $line['T1Phone']);
-    $tpl->assign("T1FB", $line['T1FB']);
-    $tpl->assign("T1Email", $line['T1Email']);
-    $tpl->assign("T1JobDescription", $line['T1JobDescription']);
-    $tpl->assign("T1CardUpload", $line['T1CardUpload']);
+
+
+    if($line['T1FName'] != ""){$AllTeam = "1.".$line['T1FName']." ".$line['T1LName']." | ".$line['T1JobDescription']."<br>";}
+    if($line['T2FName'] != ""){$AllTeam .= "2.".$line['T2FName']." ".$line['T2LName']." | ".$line['T2JobDescription']."<br>";}
+    if($line['T3FName'] != ""){$AllTeam .= "3.".$line['T3FName']." ".$line['T3LName']." | ".$line['T3JobDescription']."<br>";}
+    if($line['T4FName'] != ""){$AllTeam .= "4.".$line['T4FName']." ".$line['T4LName']." | ".$line['T4JobDescription']."<br>";}
+    if($line['T5FName'] != ""){$AllTeam .= "5.".$line['T5FName']." ".$line['T5LName']." | ".$line['T5JobDescription']."<br>";}
+    if($line['T6FName'] != ""){$AllTeam .= "6.".$line['T6FName']." ".$line['T6LName']." | ".$line['T6JobDescription']."<br>";}
+    if($line['T7FName'] != ""){$AllTeam .= "7.".$line['T7FName']." ".$line['T7LName']." | ".$line['T7JobDescription']."<br>";}
+    if($line['T8FName'] != ""){$AllTeam .= "8.".$line['T8FName']." ".$line['T8LName']." | ".$line['T8JobDescription']."<br>";}
+    if($line['T9FName'] != ""){$AllTeam .= "9.".$line['T9FName']." ".$line['T9LName']." | ".$line['T9JobDescription']."<br>";}
+    if($line['T10FName'] != ""){$AllTeam .= "10.".$line['T10FName']." ".$line['T10LName']." | ".$line['T10JobDescription']."<br>";}
+
+    $tpl->assign("AllTeam", $AllTeam);
     $tpl->assign("RegisterDate", $line['created_at']);
     $tpl->assign("id", $line['id']);
 

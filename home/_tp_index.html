@@ -60,8 +60,8 @@
                                     <table class="table table-vcenter">
                                         <thead>
                                             <tr>
-                                                <th>ผลงาน/ชื่อผลงาน</th>
-                                                <th>หัวหน้าทีมและทีมทั้งหมด</th>
+                                                <th>ชื่อผลงาน / ชื่อทีม</th>
+                                                <th>ทีมงาน</th>
                                                 <th>วันที่ส่งงาน</th>
                                                 <th colspan="2">ส่งออกข้อมูล/พิมพ์เอกสาร</th>
                                             </tr>
@@ -70,8 +70,9 @@
                                         <!-- START BLOCK : DATA -->
                                         <tr>
                                             
-                                            <td class="text-muted">{id}-{ProjectName}/{TeamName}</td>
-                                            <td class="text-muted">{T1FName} {T1LName}/{TNameAll}</td>
+                                            <td class="text-muted">ผลงาน : {ProjectName}<br>
+                                                                   ชื่อทีม : {TeamName}</td>
+                                            <td class="text-muted">{AllTeam}</td>
                                             <td class="text-muted">{RegisterDate}</td>
                                             <td class="text-end w-1"><a href="?action=delete&id={id}" class="btn btn-sm btn-danger">ลบ</a></td>
                                              
