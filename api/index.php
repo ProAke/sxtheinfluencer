@@ -31,8 +31,8 @@ $dataArray = json_decode($jsonString, true);
 
 $TeamName = $dataArray['TeamName'];
 $ProjectName = $dataArray['ProjectName'];
-$TeamName = "Team :".$dataArray['TeamName'];
-$ProjectName = "Project :".$dataArray['ProjectName'];
+$TeamName = $dataArray['TeamName'];
+$ProjectName = $dataArray['ProjectName'];
 $T1FName = $dataArray['T1FName'];
 $T1LName = $dataArray['T1LName'];
 $T1NickName = $dataArray['T1NickName'];
@@ -127,8 +127,6 @@ $T10CardUpload = $dataArray['T10CardUpload'];
 
 
 
-
-
 $created_at = date("Y-m-d H:i:s");
 $arrData = array();
 $arrData['datas']           = $data0;
@@ -141,8 +139,98 @@ $arrData['T1Bdate']         = $T1Bdate;
 $arrData['T1Phone']         = $T1Phone;
 $arrData['T1FB']            = $T1FB;
 $arrData['T1Email']         = $T1Email;
-$arrData['T1JobDescription']     = $T1JobDescription;
+$arrData['T1JobDescription']   = $T1JobDescription;
 $arrData['T1CardUpload']    = $T1CardUpload;
+
+$arrData['T2FName']         = $T2FName;
+$arrData['T2LName']         = $T2LName;
+$arrData['T2NickName']      = $T2NickName;
+$arrData['T2Bdate']         = $T2Bdate;
+$arrData['T2Phone']         = $T2Phone;
+$arrData['T2FB']            = $T2FB;
+$arrData['T2Email']         = $T2Email;
+$arrData['T2JobDescription']   = $T2JobDescription;
+$arrData['T2CardUpload']    = $T2CardUpload;
+
+$arrData['T3FName']         = $T3FName;
+$arrData['T3LName']         = $T3LName;
+$arrData['T3NickName']      = $T3NickName;
+$arrData['T3Bdate']         = $T3Bdate;
+$arrData['T3Phone']         = $T3Phone;
+$arrData['T3FB']            = $T3FB;
+$arrData['T3Email']         = $T3Email;
+$arrData['T3JobDescription']   = $T3JobDescription;
+$arrData['T3CardUpload']    = $T3CardUpload;
+
+$arrData['T4FName']         = $T4FName;
+$arrData['T4LName']         = $T4LName;
+$arrData['T4NickName']      = $T4NickName;
+$arrData['T4Bdate']         = $T4Bdate;
+$arrData['T4Phone']         = $T4Phone;
+$arrData['T4FB']            = $T4FB;
+$arrData['T4Email']         = $T4Email;
+$arrData['T4JobDescription']   = $T4JobDescription;
+$arrData['T4CardUpload']    = $T4CardUpload;
+
+$arrData['T5FName']         = $T5FName;
+$arrData['T5LName']         = $T5LName;
+$arrData['T5NickName']      = $T5NickName;
+$arrData['T5Bdate']         = $T5Bdate;
+$arrData['T5Phone']         = $T5Phone;
+$arrData['T5FB']            = $T5FB;
+$arrData['T5Email']         = $T5Email;
+$arrData['T5JobDescription']   = $T5JobDescription;
+$arrData['T5CardUpload']    = $T5CardUpload;
+
+$arrData['T6FName']         = $T6FName;
+$arrData['T6LName']         = $T6LName;
+$arrData['T6NickName']      = $T6NickName;
+$arrData['T6Bdate']         = $T6Bdate;
+$arrData['T6Phone']         = $T6Phone;
+$arrData['T6FB']            = $T6FB;
+$arrData['T6Email']         = $T6Email;
+$arrData['T6JobDescription']   = $T6JobDescription;
+$arrData['T6CardUpload']    = $T6CardUpload;
+
+$arrData['T7FName']         = $T7FName;
+$arrData['T7LName']         = $T7LName;
+$arrData['T7NickName']      = $T7NickName;
+$arrData['T7Bdate']         = $T7Bdate;
+$arrData['T7Phone']         = $T7Phone;
+$arrData['T7FB']            = $T7FB;
+$arrData['T7Email']         = $T7Email;
+$arrData['T7JobDescription']   = $T7JobDescription;
+$arrData['T7CardUpload']    = $T7CardUpload;
+
+$arrData['T8FName']         = $T8FName;
+$arrData['T8LName']         = $T8LName;
+$arrData['T8NickName']      = $T8NickName;
+$arrData['T8Bdate']         = $T8Bdate;
+$arrData['T8Phone']         = $T8Phone;
+$arrData['T8FB']            = $T8FB;
+$arrData['T8Email']         = $T8Email;
+$arrData['T8JobDescription']   = $T8JobDescription;
+$arrData['T8CardUpload']    = $T8CardUpload;
+$arrData['T9FName']         = $T9FName;
+$arrData['T9LName']         = $T9LName;
+$arrData['T9NickName']      = $T9NickName;
+$arrData['T9Bdate']         = $T9Bdate;
+$arrData['T9Phone']         = $T9Phone;
+$arrData['T9FB']            = $T9FB;
+$arrData['T9Email']         = $T9Email;
+$arrData['T9JobDescription']   = $T9JobDescription;
+$arrData['T9CardUpload']    = $T9CardUpload;
+
+$arrData['T10FName']        = $T10FName;
+$arrData['T10LName']        = $T10LName;
+$arrData['T10NickName']     = $T10NickName;
+$arrData['T10Bdate']        = $T10Bdate;
+$arrData['T10Phone']        = $T10Phone;
+$arrData['T10FB']           = $T10FB;
+$arrData['T10Email']        = $T10Email;
+$arrData['T10JobDescription']  = $T10JobDescription;
+$arrData['T10CardUpload']   = $T10CardUpload;
+
 $arrData['status']          = 0;
 $arrData['created_at']      = $created_at;
 foreach ($arrData as $key => $value) {
