@@ -11,7 +11,21 @@ include_once("../include/function.inc.php");
 
 
 $data = $_REQUEST;
-$TeamName = "-->".$_REQUEST[3];
+$i=1;
+foreach($_REQUEST as $key => $value) {
+    if(!empty($value)) {
+        $data .= $key . ' : ' . $value . '\n';
+        if($i==1){
+            $TeamName = "1-".$key.$value;
+        }
+        if($i==2){
+            $TeamName = $TeamName."-2-".$key.$value;
+        }
+    }
+    $i++;
+}
+
+
 $created_at = date("Y-m-d H:i:s");
 
 
