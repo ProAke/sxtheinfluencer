@@ -16,7 +16,7 @@ include_once("../authentication/check_login.php");
 
 $tbAppform = "tb_app_form";
 
-$tpl = new TemplatePower("../template/_tp_inner.html");
+$tpl = new TemplatePower("../template/_tp_inner-print.html");
 $tpl->assignInclude("body", "_tp_detail.html");
 $tpl->prepare();
 $tpl->assign("_ROOT.page_title", "ใบสมัคร");
