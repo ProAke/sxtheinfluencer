@@ -29,7 +29,7 @@ $tpl->assign("_ROOT.avatar","../static/avatars/".$_SESSION['AVATAR']);
 
 
 
-$query = "SELECT * FROM `tb_app_form` WHERE `id`='{$_GET['id']}''";
+$query = "SELECT * FROM `".$tbAppform."` WHERE `id`='".$_GET['id']."'";
 $result = $conn->query($query);
 while( $line = $result->fetch_assoc()){
     $tpl->newBlock("DATA");
