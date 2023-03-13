@@ -139,7 +139,7 @@ while( $line = $result->fetch_assoc()){
     $tpl->assign("T1FB", $line['T1FB']);
     $tpl->assign("T1Email", $line['T1Email']);
     $tpl->assign("T1JobDescription", $line['T1JobDescription']);
-    
+    $tpl->assign("T1CardUpload", $line['T1CardUpload']);
 
     $tpl->assign("RegisterDate", $line['created_at']);
     $tpl->assign("id", $line['id']);
