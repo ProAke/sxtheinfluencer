@@ -17,9 +17,9 @@ include_once("../authentication/check_login.php");
 $tbAppform = "tb_app_form";
 
 $tpl = new TemplatePower("../template/_tp_inner.html");
-$tpl->assignInclude("body", "_tp_index.html");
+$tpl->assignInclude("body", "_tp_detail.html");
 $tpl->prepare();
-$tpl->assign("_ROOT.page_title", "หน้าแรก");
+$tpl->assign("_ROOT.page_title", "ใบสมัคร");
 $tpl->assign("_ROOT.logo_brand_alt", $Brand);
 $tpl->assign("_ROOT.fullname",$_SESSION['FULLNAME']);
 $tpl->assign("_ROOT.avatar","../static/avatars/".$_SESSION['AVATAR']);

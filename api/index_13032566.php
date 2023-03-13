@@ -164,8 +164,8 @@ $agreement2 = $dataArray['agreement2'];
 $agreement3 = $dataArray['agreement3'];
 
 
-// start apps
-if($T1Email != ""){
+
+
 
 $created_at = date("Y-m-d H:i:s");
 $arrData = array();
@@ -284,13 +284,18 @@ foreach ($arrData as $key => $value) {
 $strFieldTmp = implode(",", $arrFieldTmp);
 $strValueTmp = implode(",", $arrValueTmp);
 $query = "INSERT INTO `tb_app_form`($strFieldTmp) VALUES($strValueTmp)";
-$rs = $conn->query($query);
+$result = $conn->query($query);
 
-$resulttx = Login();
- if($resulttx['status'] == 'success'){
+
+if($result){
+
+for($i=1;$i<=10;$i++){
+
+    $resulttx = Login();
+    if($resulttx['status'] == 'success'){
     
     //------------- T1 ---------------------------------   
-    if ($T1Email != "") {
+     if ($T1Email != "") {
         $session_id = $resulttx['data']['session_id'];
         $message_id = "";
         $param = array();
@@ -309,9 +314,9 @@ $resulttx = Login();
         $resulttx = sendTransactional($param);
         $session_id="";
     
-    }
-    //------------- T2 ---------------------------------   
-    if ($T2Email != "") {
+        }
+      //------------- T2 ---------------------------------   
+      if ($T2Email != "") {
         $session_id = $resulttx['data']['session_id'];
         $message_id = "";
         $param = array();
@@ -330,7 +335,9 @@ $resulttx = Login();
         $resulttx = sendTransactional($param);
         $session_id="";
     
-    }   
+        }  
+    
+    
     //------------- T3 ---------------------------------   
     if ($T3Email != "") {
         $session_id = $resulttx['data']['session_id'];
@@ -350,9 +357,10 @@ $resulttx = Login();
         $param['session_id'] = $session_id;         
         $resulttx = sendTransactional($param);
         $session_id="";
-    }
-    //------------- T4 ---------------------------------   
-    if ($T4Email != "") {
+    
+        }
+      //------------- T4 ---------------------------------   
+      if ($T4Email != "") {
         $session_id = $resulttx['data']['session_id'];
         $message_id = "";
         $param = array();
@@ -371,9 +379,12 @@ $resulttx = Login();
         $resulttx = sendTransactional($param);
         $session_id="";
     
-     } 
-    //------------- T5 ---------------------------------   
-    if ($T5Email != "") {
+        }  
+
+
+
+      //------------- T5 ---------------------------------   
+      if ($T5Email != "") {
         $session_id = $resulttx['data']['session_id'];
         $message_id = "";
         $param = array();
@@ -392,9 +403,13 @@ $resulttx = Login();
         $resulttx = sendTransactional($param);
         $session_id="";
     
-    }  
-    //------------- T6 ---------------------------------   
-    if ($T6Email != "") {
+        }  
+
+
+
+
+ //------------- T6 ---------------------------------   
+ if ($T6Email != "") {
     $session_id = $resulttx['data']['session_id'];
     $message_id = "";
     $param = array();
@@ -414,8 +429,8 @@ $resulttx = Login();
     $session_id="";
 
     }
-    //------------- T7 ---------------------------------   
-    if ($T7Email != "") {
+  //------------- T2 ---------------------------------   
+  if ($T7Email != "") {
     $session_id = $resulttx['data']['session_id'];
     $message_id = "";
     $param = array();
@@ -437,8 +452,8 @@ $resulttx = Login();
     }  
 
 
-    //------------- T8 ---------------------------------   
-    if ($T8Email != "") {
+//------------- T8 ---------------------------------   
+if ($T8Email != "") {
     $session_id = $resulttx['data']['session_id'];
     $message_id = "";
     $param = array();
@@ -457,9 +472,9 @@ $resulttx = Login();
     $resulttx = sendTransactional($param);
     $session_id="";
 
-    }  
-    //------------- T9 ---------------------------------   
-    if ($T9Email != "") {
+    }
+  //------------- T9 ---------------------------------   
+  if ($T9Email != "") {
     $session_id = $resulttx['data']['session_id'];
     $message_id = "";
     $param = array();
@@ -482,35 +497,62 @@ $resulttx = Login();
 
 
 
-    //------------- T10 ---------------------------------   
-    if ($T10Email != "") {
-       $session_id = $resulttx['data']['session_id'];
-       $message_id = "";
-       $param = array();
-       $param['priority'] = "1"; // ความสำคัญของ email : 0 = ปกติ , 1 = สูง
-       $param['from_name'] = ""; // ชื่อผู้ส่ง หากไม่มี ใส่ค่าว่าง
-       $param['from_email'] = ""; // ** อีเมลล์ผู้ส่ง
-       $param['to_name'] = $T10FName." ".$T10LName;; 
-       $param['to_email'] = $T10Email;
-       /* กรณีส่งแบบ TEMPLATE KEY */
-       $param['template_key'] = "159026409b53464fa0"; // template id ที่ต้องการส่ง
-       //$param['content_html'] = '{"Firstname":"'.$FName[$i].'","Lastname":"'.$LName[$i].'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
-       $param['transactional_group_name'] = "MUSTER"; // ชื่อของกลุ่ม transactional ลักษณะคล้ายกับ ชื่อของ campaign
-       $param['message_id'] = genMessageID($message_id);
-       $param['report_type'] = "False"; // โหมด report จำเป็นต้องใส่ web service ที่ เว็บไซท์ https://app2.taximail.com/app/user/system/ : False = ปิดโหมดรีพอร์ต , Unique = รีพอร์ตเฉพาะข้อมูลที่ ยูนิค , Full = รีพอร์ตทุกข้อมูล
-       $param['session_id'] = $session_id;         
-       $resulttx = sendTransactional($param);
-       $session_id="";
-     }
- 
+  //------------- T10 ---------------------------------   
+  if ($T10Email != "") {
+    $session_id = $resulttx['data']['session_id'];
+    $message_id = "";
+    $param = array();
+    $param['priority'] = "1"; // ความสำคัญของ email : 0 = ปกติ , 1 = สูง
+    $param['from_name'] = ""; // ชื่อผู้ส่ง หากไม่มี ใส่ค่าว่าง
+    $param['from_email'] = ""; // ** อีเมลล์ผู้ส่ง
+    $param['to_name'] = $T10FName." ".$T10LName;; 
+    $param['to_email'] = $T10Email;
+    /* กรณีส่งแบบ TEMPLATE KEY */
+    $param['template_key'] = "159026409b53464fa0"; // template id ที่ต้องการส่ง
+    //$param['content_html'] = '{"Firstname":"'.$FName[$i].'","Lastname":"'.$LName[$i].'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
+    $param['transactional_group_name'] = "MUSTER"; // ชื่อของกลุ่ม transactional ลักษณะคล้ายกับ ชื่อของ campaign
+    $param['message_id'] = genMessageID($message_id);
+    $param['report_type'] = "False"; // โหมด report จำเป็นต้องใส่ web service ที่ เว็บไซท์ https://app2.taximail.com/app/user/system/ : False = ปิดโหมดรีพอร์ต , Unique = รีพอร์ตเฉพาะข้อมูลที่ ยูนิค , Full = รีพอร์ตทุกข้อมูล
+    $param['session_id'] = $session_id;         
+    $resulttx = sendTransactional($param);
+    $session_id="";
 
-  }else{
+    }  
+
+
+
+
+
+
+
+
+
+
+
+
+    }else{
         echo "Login Failed!! : ".$resulttx['ErrorMessage'];
-  }
+    }
+
+}
 
 
 
-} // end  apps 
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
 
 
 
