@@ -54,16 +54,16 @@ while( $line = $result->fetch_assoc()){
     $tpl->assign("ProjectName", $line['ProjectName']);
 
 
-    if($line['T1FName'] != ""){$AllTeam = "1.".$line['T1FName']." ".$line['T1LName']." | ".$line['T1JobDescription']."<br>";}
-    if($line['T2FName'] != ""){$AllTeam .= "2.".$line['T2FName']." ".$line['T2LName']." | ".$line['T2JobDescription']."<br>";}
-    if($line['T3FName'] != ""){$AllTeam .= "3.".$line['T3FName']." ".$line['T3LName']." | ".$line['T3JobDescription']."<br>";}
-    if($line['T4FName'] != ""){$AllTeam .= "4.".$line['T4FName']." ".$line['T4LName']." | ".$line['T4JobDescription']."<br>";}
-    if($line['T5FName'] != ""){$AllTeam .= "5.".$line['T5FName']." ".$line['T5LName']." | ".$line['T5JobDescription']."<br>";}
-    if($line['T6FName'] != ""){$AllTeam .= "6.".$line['T6FName']." ".$line['T6LName']." | ".$line['T6JobDescription']."<br>";}
-    if($line['T7FName'] != ""){$AllTeam .= "7.".$line['T7FName']." ".$line['T7LName']." | ".$line['T7JobDescription']."<br>";}
-    if($line['T8FName'] != ""){$AllTeam .= "8.".$line['T8FName']." ".$line['T8LName']." | ".$line['T8JobDescription']."<br>";}
-    if($line['T9FName'] != ""){$AllTeam .= "9.".$line['T9FName']." ".$line['T9LName']." | ".$line['T9JobDescription']."<br>";}
-    if($line['T10FName'] != ""){$AllTeam .= "10.".$line['T10FName']." ".$line['T10LName']." | ".$line['T10JobDescription']."<br>";}
+    if($line['T1FName'] != ""){$AllTeam = "1.".$line['T1FName']." ".$line['T1LName']."  หน้าที่ : ".$line['T1JobDescription']."<br>";}
+    if($line['T2FName'] != ""){$AllTeam .= "2.".$line['T2FName']." ".$line['T2LName']." หน้าที่ : ".$line['T2JobDescription']."<br>";}
+    if($line['T3FName'] != ""){$AllTeam .= "3.".$line['T3FName']." ".$line['T3LName']." หน้าที่ : ".$line['T3JobDescription']."<br>";}
+    if($line['T4FName'] != ""){$AllTeam .= "4.".$line['T4FName']." ".$line['T4LName']." หน้าที่ : ".$line['T4JobDescription']."<br>";}
+    if($line['T5FName'] != ""){$AllTeam .= "5.".$line['T5FName']." ".$line['T5LName']." หน้าที่ : ".$line['T5JobDescription']."<br>";}
+    if($line['T6FName'] != ""){$AllTeam .= "6.".$line['T6FName']." ".$line['T6LName']." หน้าที่ : ".$line['T6JobDescription']."<br>";}
+    if($line['T7FName'] != ""){$AllTeam .= "7.".$line['T7FName']." ".$line['T7LName']." หน้าที่ : ".$line['T7JobDescription']."<br>";}
+    if($line['T8FName'] != ""){$AllTeam .= "8.".$line['T8FName']." ".$line['T8LName']." หน้าที่ : ".$line['T8JobDescription']."<br>";}
+    if($line['T9FName'] != ""){$AllTeam .= "9.".$line['T9FName']." ".$line['T9LName']." หน้าที่ : ".$line['T9JobDescription']."<br>";}
+    if($line['T10FName'] != ""){$AllTeam .= "10.".$line['T10FName']." ".$line['T10LName']." หน้าที่ : ".$line['T10JobDescription']."<br>";}
 
     $tpl->assign("AllTeam", $AllTeam);
     $tpl->assign("RegisterDate", $line['created_at']);
