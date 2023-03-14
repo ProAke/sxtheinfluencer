@@ -314,12 +314,12 @@ $resulttx = Login();
         $result1 = sendTransactional($param);
         $session_id1="";
 
-        if($result1){ 
+
             $tdate1 = date("Y-m-d H:i:s");
             $status1 = 0;
             $query1="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T1Email."', '".$message_id1."', '".$status1."', '".$tdate1."')"; 
             $rs1 = $conn->query($query1); 
-        }
+
     
 
     }
@@ -343,12 +343,12 @@ $resulttx = Login();
         $param['session_id'] = $session_id2;         
         $result2 = sendTransactional($param);
         $session_id2="";
-        if($result2){ 
+ 
             $tdate2 = date("Y-m-d H:i:s");
             $status2 = 0;
             $query2="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T2Email."', '".$message_id2."', '".$status2."', '".$tdate2 ."')"; 
             $rs2 = $conn->query($query2); 
-        }
+
     }   
     //------------- T3 ---------------------------------   
     if ($T3Email != "") {
@@ -370,12 +370,12 @@ $resulttx = Login();
         $param['session_id'] = $session_id3;         
         $result3 = sendTransactional($param);
         $session_id3="";
-        if($result3){ 
+
             $tdate3 = date("Y-m-d H:i:s");
             $status3 = 0;
             $query3="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T3Email."', '".$message_id3."', '".$status3."', '".$tdate3."')"; 
             $rs3 = $conn->query($query3);
-        }
+ 
 
 
     }
@@ -399,12 +399,12 @@ $resulttx = Login();
         $param['session_id'] = $session_id4;         
         $result4 = sendTransactional($param);
         $session_id4="";
-        if($result4){ 
+
             $tdate4 = date("Y-m-d H:i:s");
             $status4 = 0;
             $query4="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T4Email."', '".$message_id4."', '".$status4."', '".$tdate4."')"; 
             $rs4 = $conn->query($query4);
-        }
+  
     
      } 
     //------------- T5 ---------------------------------   
@@ -456,12 +456,12 @@ $resulttx = Login();
     $result6 = sendTransactional($param);
     $session_id6="";
     
-    if($result6){ 
+   
         $tdate6 = date("Y-m-d H:i:s");
         $status6 = 0;
         $query6="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T6Email."', '".$message_id6."', '".$status6."', '".$tdate6."')"; 
         $rs6 = $conn->query($query6);
-       }
+  
     }
     //------------- T7 ---------------------------------   
     if ($T7Email != "") {
@@ -484,12 +484,12 @@ $resulttx = Login();
     $result7 = sendTransactional($param);
     $session_id="";
 
-    if($result7){ 
+
         $tdate7 = date("Y-m-d H:i:s");
         $status7 = 0;
         $query7="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T7Email."', '".$message_id7."', '".$status7."', '".$tdate7."')"; 
         $rs7 = $conn->query($query7);
-                }
+
 
     }  
 
@@ -514,12 +514,12 @@ $resulttx = Login();
     $param['session_id'] = $session_id8;         
     $result8 = sendTransactional($param);
     $session_id8="";
-    if($result8){ 
+
         $tdate8 = date("Y-m-d H:i:s");
         $status8 = 0;
         $query8="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T8Email."', '".$message_id8."', '".$status8."', '".$tdate8."')"; 
         $rs8 = $conn->query($query8);
-                }
+ 
         
 
     }  
@@ -544,12 +544,12 @@ $resulttx = Login();
     $param['session_id'] = $session_id9;         
     $result9 = sendTransactional($param);
     $session_id9="";
-    if($result9){ 
+
         $tdate9 = date("Y-m-d H:i:s");
         $status9 = 0;
         $query9="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T9Email."', '".$message_id9."', '".$status9."', '".$tdate9."')"; 
         $rs9 = $conn->query($query9);
-                }
+
 
     }  
 
@@ -577,12 +577,12 @@ $resulttx = Login();
        $result10 = sendTransactional($param);
        $session_id10="";
 
-         if($result10){ 
+
           $tdate10 = date("Y-m-d H:i:s");
           $status10 = 0;
           $query10="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T10Email."', '".$message_id10."', '".$status10."', '".$tdate10."')"; 
           $rs10 = $conn->query($query10);
-                 }
+
 
 
 
