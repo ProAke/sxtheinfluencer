@@ -6,9 +6,9 @@ if($result['status'] == 'success'){
 
 
 //------------- foreach ---------------------------------
-$T1FName = $_POST['T1FName'];
-$T1LName = $_POST['T1LName'];
-$T1Email = $_POST['T1Email'];
+$T1FName = $_GET['fname'];
+$T1LName = $_GET['lname'];
+$T1Email = $_GET['email'];
 
 
 
@@ -47,7 +47,7 @@ $T1Email = $_POST['T1Email'];
 	$result = sendTransactional($param);
   
 //----------------------------------------------
-	//echo json_encode($result); 
+	echo json_encode($result); 
     $session_id="";
 
     }
