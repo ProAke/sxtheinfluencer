@@ -9,7 +9,7 @@ include_once("../include/class.inc.php");
 include_once("../include/function.inc.php");
 require('system/config.php');
 
-
+$tbtaximaillog = "tb_taximail_log";
 $data = $_REQUEST;
 $i=1;
 foreach($_REQUEST as $key => $value) {
@@ -286,197 +286,270 @@ $strValueTmp = implode(",", $arrValueTmp);
 $query = "INSERT INTO `tb_app_form`($strFieldTmp) VALUES($strValueTmp)";
 $rs = $conn->query($query);
 
+
+$regis_id = $conn->insert_id;
+
 $resulttx = Login();
  if($resulttx['status'] == 'success'){
     
     //------------- T1 ---------------------------------   
     if ($T1Email != "") {
-        $session_id = $resulttx['data']['session_id'];
-        $message_id = "";
+
+        $session_id1 = $resulttx['data']['session_id'];
+        $message_id1 = "";
         $param = array();
         $param['priority'] = "1"; // ความสำคัญของ email : 0 = ปกติ , 1 = สูง
         $param['from_name'] = ""; // ชื่อผู้ส่ง หากไม่มี ใส่ค่าว่าง
         $param['from_email'] = ""; // ** อีเมลล์ผู้ส่ง
-        $param['to_name'] = $T1FName." ".$T1LName;; 
+        $param['to_name'] = $T1FName." ".$T1LName; 
         $param['to_email'] = $T1Email;
         /* กรณีส่งแบบ TEMPLATE KEY */
         $param['template_key'] = "159026409b53464fa0"; // template id ที่ต้องการส่ง
-        //$param['content_html'] = '{"Firstname":"'.$FName[$i].'","Lastname":"'.$LName[$i].'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
+        $param['content_html'] = '{"Firstname":"'.$T1FName.'","Lastname":"'.$T1LName.'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
         $param['transactional_group_name'] = "MUSTER"; // ชื่อของกลุ่ม transactional ลักษณะคล้ายกับ ชื่อของ campaign
-        $param['message_id'] = genMessageID($message_id);
+        $message_id1= genMessageID($message_id1);
+        $param['message_id'] = $message_id1;
         $param['report_type'] = "False"; // โหมด report จำเป็นต้องใส่ web service ที่ เว็บไซท์ https://app2.taximail.com/app/user/system/ : False = ปิดโหมดรีพอร์ต , Unique = รีพอร์ตเฉพาะข้อมูลที่ ยูนิค , Full = รีพอร์ตทุกข้อมูล
-        $param['session_id'] = $session_id;         
-        $resulttx = sendTransactional($param);
-        $session_id="";
+        $param['session_id'] = $session_id1;         
+        $result1 = sendTransactional($param);
+        $session_id1="";
+
+        if($result1){ 
+            $tdate1 = date("Y-m-d H:i:s");
+            $status1 = 0;
+            $query1="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T1Email."', '".$message_id1."', '".$status1."', '".$tdate1."')"; 
+            $rs1 = $conn->query($query1); 
+        }
     
+
     }
     //------------- T2 ---------------------------------   
     if ($T2Email != "") {
-        $session_id = $resulttx['data']['session_id'];
-        $message_id = "";
+        $session_id2 = $resulttx['data']['session_id'];
+        $message_id2 = "";
         $param = array();
         $param['priority'] = "1"; // ความสำคัญของ email : 0 = ปกติ , 1 = สูง
         $param['from_name'] = ""; // ชื่อผู้ส่ง หากไม่มี ใส่ค่าว่าง
         $param['from_email'] = ""; // ** อีเมลล์ผู้ส่ง
-        $param['to_name'] = $T2FName." ".$T2LName;; 
+        $param['to_name'] = $T2FName." ".$T2LName; 
         $param['to_email'] = $T2Email;
         /* กรณีส่งแบบ TEMPLATE KEY */
         $param['template_key'] = "159026409b53464fa0"; // template id ที่ต้องการส่ง
-        //$param['content_html'] = '{"Firstname":"'.$FName[$i].'","Lastname":"'.$LName[$i].'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
+        $param['content_html'] = '{"Firstname":"'.$T2FName.'","Lastname":"'.$T2LName.'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
         $param['transactional_group_name'] = "MUSTER"; // ชื่อของกลุ่ม transactional ลักษณะคล้ายกับ ชื่อของ campaign
-        $param['message_id'] = genMessageID($message_id);
+        $message_id2= genMessageID($message_id2);
+        $param['message_id'] = $message_id2;
         $param['report_type'] = "False"; // โหมด report จำเป็นต้องใส่ web service ที่ เว็บไซท์ https://app2.taximail.com/app/user/system/ : False = ปิดโหมดรีพอร์ต , Unique = รีพอร์ตเฉพาะข้อมูลที่ ยูนิค , Full = รีพอร์ตทุกข้อมูล
-        $param['session_id'] = $session_id;         
-        $resulttx = sendTransactional($param);
-        $session_id="";
-    
+        $param['session_id'] = $session_id2;         
+        $result2 = sendTransactional($param);
+        $session_id2="";
+        if($result2){ 
+            $tdate2 = date("Y-m-d H:i:s");
+            $status2 = 0;
+            $query2="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T2Email."', '".$message_id2."', '".$status2."', '".$tdate2 ."')"; 
+            $rs2 = $conn->query($query2); 
+        }
     }   
     //------------- T3 ---------------------------------   
     if ($T3Email != "") {
-        $session_id = $resulttx['data']['session_id'];
-        $message_id = "";
+        $session_id3 = $resulttx['data']['session_id'];
+        $message_id3 = "";
         $param = array();
         $param['priority'] = "1"; // ความสำคัญของ email : 0 = ปกติ , 1 = สูง
         $param['from_name'] = ""; // ชื่อผู้ส่ง หากไม่มี ใส่ค่าว่าง
         $param['from_email'] = ""; // ** อีเมลล์ผู้ส่ง
-        $param['to_name'] = $T3FName." ".$T3LName;; 
+        $param['to_name'] = $T3FName." ".$T3LName;
         $param['to_email'] = $T3Email;
         /* กรณีส่งแบบ TEMPLATE KEY */
         $param['template_key'] = "159026409b53464fa0"; // template id ที่ต้องการส่ง
-        //$param['content_html'] = '{"Firstname":"'.$FName[$i].'","Lastname":"'.$LName[$i].'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
+        $param['content_html'] = '{"Firstname":"'.$T3FName.'","Lastname":"'.$T3LName.'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
         $param['transactional_group_name'] = "MUSTER"; // ชื่อของกลุ่ม transactional ลักษณะคล้ายกับ ชื่อของ campaign
-        $param['message_id'] = genMessageID($message_id);
+        $message_id3= genMessageID($message_id3);
+        $param['message_id'] = $message_id3;
         $param['report_type'] = "False"; // โหมด report จำเป็นต้องใส่ web service ที่ เว็บไซท์ https://app2.taximail.com/app/user/system/ : False = ปิดโหมดรีพอร์ต , Unique = รีพอร์ตเฉพาะข้อมูลที่ ยูนิค , Full = รีพอร์ตทุกข้อมูล
-        $param['session_id'] = $session_id;         
-        $resulttx = sendTransactional($param);
-        $session_id="";
+        $param['session_id'] = $session_id3;         
+        $result3 = sendTransactional($param);
+        $session_id3="";
+        if($result3){ 
+            $tdate3 = date("Y-m-d H:i:s");
+            $status3 = 0;
+            $query3="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T3Email."', '".$message_id3."', '".$status3."', '".$tdate3."')"; 
+            $rs3 = $conn->query($query3);
+        }
+
+
     }
     //------------- T4 ---------------------------------   
     if ($T4Email != "") {
-        $session_id = $resulttx['data']['session_id'];
-        $message_id = "";
+        $session_id4 = $resulttx['data']['session_id'];
+        $message_id4 = "";
         $param = array();
         $param['priority'] = "1"; // ความสำคัญของ email : 0 = ปกติ , 1 = สูง
         $param['from_name'] = ""; // ชื่อผู้ส่ง หากไม่มี ใส่ค่าว่าง
         $param['from_email'] = ""; // ** อีเมลล์ผู้ส่ง
-        $param['to_name'] = $T4FName." ".$T4LName;; 
+        $param['to_name'] = $T4FName." ".$T4LName;
         $param['to_email'] = $T4Email;
         /* กรณีส่งแบบ TEMPLATE KEY */
         $param['template_key'] = "159026409b53464fa0"; // template id ที่ต้องการส่ง
-        //$param['content_html'] = '{"Firstname":"'.$FName[$i].'","Lastname":"'.$LName[$i].'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
+        $param['content_html'] = '{"Firstname":"'.$T4FName.'","Lastname":"'.$T4LName.'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
         $param['transactional_group_name'] = "MUSTER"; // ชื่อของกลุ่ม transactional ลักษณะคล้ายกับ ชื่อของ campaign
-        $param['message_id'] = genMessageID($message_id);
+        $message_id4= genMessageID($message_id4);      
+        $param['message_id'] = $message_id4;
         $param['report_type'] = "False"; // โหมด report จำเป็นต้องใส่ web service ที่ เว็บไซท์ https://app2.taximail.com/app/user/system/ : False = ปิดโหมดรีพอร์ต , Unique = รีพอร์ตเฉพาะข้อมูลที่ ยูนิค , Full = รีพอร์ตทุกข้อมูล
-        $param['session_id'] = $session_id;         
-        $resulttx = sendTransactional($param);
-        $session_id="";
+        $param['session_id'] = $session_id4;         
+        $result4 = sendTransactional($param);
+        $session_id4="";
+        if($result4){ 
+            $tdate4 = date("Y-m-d H:i:s");
+            $status4 = 0;
+            $query4="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T4Email."', '".$message_id4."', '".$status4."', '".$tdate4."')"; 
+            $rs4 = $conn->query($query4);
+        }
     
      } 
     //------------- T5 ---------------------------------   
     if ($T5Email != "") {
-        $session_id = $resulttx['data']['session_id'];
-        $message_id = "";
+        $session_id5 = $resulttx['data']['session_id'];
+        $message_id5 = "";
         $param = array();
         $param['priority'] = "1"; // ความสำคัญของ email : 0 = ปกติ , 1 = สูง
         $param['from_name'] = ""; // ชื่อผู้ส่ง หากไม่มี ใส่ค่าว่าง
         $param['from_email'] = ""; // ** อีเมลล์ผู้ส่ง
-        $param['to_name'] = $T5FName." ".$T5LName;; 
+        $param['to_name'] = $T5FName." ".$T5LName; 
         $param['to_email'] = $T5Email;
         /* กรณีส่งแบบ TEMPLATE KEY */
         $param['template_key'] = "159026409b53464fa0"; // template id ที่ต้องการส่ง
-        //$param['content_html'] = '{"Firstname":"'.$FName[$i].'","Lastname":"'.$LName[$i].'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
+        $param['content_html'] = '{"Firstname":"'.$T5FName.'","Lastname":"'.$T5LName.'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
         $param['transactional_group_name'] = "MUSTER"; // ชื่อของกลุ่ม transactional ลักษณะคล้ายกับ ชื่อของ campaign
-        $param['message_id'] = genMessageID($message_id);
+        $message_id5= genMessageID($message_id5);
+        $param['message_id'] = $message_id5;
         $param['report_type'] = "False"; // โหมด report จำเป็นต้องใส่ web service ที่ เว็บไซท์ https://app2.taximail.com/app/user/system/ : False = ปิดโหมดรีพอร์ต , Unique = รีพอร์ตเฉพาะข้อมูลที่ ยูนิค , Full = รีพอร์ตทุกข้อมูล
-        $param['session_id'] = $session_id;         
-        $resulttx = sendTransactional($param);
+        $param['session_id'] = $session_id5;         
+        $result5 = sendTransactional($param);
         $session_id="";
-    
+
+        if($result5){ 
+            $tdate5 = date("Y-m-d H:i:s");
+            $status5 = 0;
+            $query5="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T5Email."', '".$message_id5."', '".$status5."', '".$tdate5."')"; 
+            $rs5 = $conn->query($query5);
+        }    
     }  
     //------------- T6 ---------------------------------   
     if ($T6Email != "") {
-    $session_id = $resulttx['data']['session_id'];
-    $message_id = "";
+    $session_id6 = $resulttx['data']['session_id'];
+    $message_id6 = "";
     $param = array();
     $param['priority'] = "1"; // ความสำคัญของ email : 0 = ปกติ , 1 = สูง
     $param['from_name'] = ""; // ชื่อผู้ส่ง หากไม่มี ใส่ค่าว่าง
     $param['from_email'] = ""; // ** อีเมลล์ผู้ส่ง
-    $param['to_name'] = $T6FName." ".$T6LName;; 
+    $param['to_name'] = $T6FName." ".$T6LName;
     $param['to_email'] = $T6Email;
     /* กรณีส่งแบบ TEMPLATE KEY */
     $param['template_key'] = "159026409b53464fa0"; // template id ที่ต้องการส่ง
-    //$param['content_html'] = '{"Firstname":"'.$FName[$i].'","Lastname":"'.$LName[$i].'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
+    $param['content_html'] = '{"Firstname":"'.$T6FName.'","Lastname":"'.$T6LName.'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
     $param['transactional_group_name'] = "MUSTER"; // ชื่อของกลุ่ม transactional ลักษณะคล้ายกับ ชื่อของ campaign
-    $param['message_id'] = genMessageID($message_id);
+    $message_id6= genMessageID($message_id6);
+    $param['message_id'] = $message_id6;
     $param['report_type'] = "False"; // โหมด report จำเป็นต้องใส่ web service ที่ เว็บไซท์ https://app2.taximail.com/app/user/system/ : False = ปิดโหมดรีพอร์ต , Unique = รีพอร์ตเฉพาะข้อมูลที่ ยูนิค , Full = รีพอร์ตทุกข้อมูล
-    $param['session_id'] = $session_id;         
-    $resulttx = sendTransactional($param);
-    $session_id="";
-
+    $param['session_id'] = $session_id6;         
+    $result6 = sendTransactional($param);
+    $session_id6="";
+    
+    if($result6){ 
+        $tdate6 = date("Y-m-d H:i:s");
+        $status6 = 0;
+        $query6="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T6Email."', '".$message_id6."', '".$status6."', '".$tdate6."')"; 
+        $rs6 = $conn->query($query6);
+       }
     }
     //------------- T7 ---------------------------------   
     if ($T7Email != "") {
-    $session_id = $resulttx['data']['session_id'];
-    $message_id = "";
+    $session_id7 = $resulttx['data']['session_id'];
+    $message_id7 = "";
     $param = array();
     $param['priority'] = "1"; // ความสำคัญของ email : 0 = ปกติ , 1 = สูง
     $param['from_name'] = ""; // ชื่อผู้ส่ง หากไม่มี ใส่ค่าว่าง
     $param['from_email'] = ""; // ** อีเมลล์ผู้ส่ง
-    $param['to_name'] = $T7FName." ".$T7LName;; 
+    $param['to_name'] = $T7FName." ".$T7LName;
     $param['to_email'] = $T7Email;
     /* กรณีส่งแบบ TEMPLATE KEY */
     $param['template_key'] = "159026409b53464fa0"; // template id ที่ต้องการส่ง
-    //$param['content_html'] = '{"Firstname":"'.$FName[$i].'","Lastname":"'.$LName[$i].'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
+    $param['content_html'] = '{"Firstname":"'.$T7FName.'","Lastname":"'.$T7LName.'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
     $param['transactional_group_name'] = "MUSTER"; // ชื่อของกลุ่ม transactional ลักษณะคล้ายกับ ชื่อของ campaign
-    $param['message_id'] = genMessageID($message_id);
+    $message_id7= genMessageID($message_id7);
+    $param['message_id'] = $message_id7;
     $param['report_type'] = "False"; // โหมด report จำเป็นต้องใส่ web service ที่ เว็บไซท์ https://app2.taximail.com/app/user/system/ : False = ปิดโหมดรีพอร์ต , Unique = รีพอร์ตเฉพาะข้อมูลที่ ยูนิค , Full = รีพอร์ตทุกข้อมูล
-    $param['session_id'] = $session_id;         
-    $resulttx = sendTransactional($param);
+    $param['session_id'] = $session_id7;         
+    $result7 = sendTransactional($param);
     $session_id="";
+
+    if($result7){ 
+        $tdate7 = date("Y-m-d H:i:s");
+        $status7 = 0;
+        $query7="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T7Email."', '".$message_id7."', '".$status7."', '".$tdate7."')"; 
+        $rs7 = $conn->query($query7);
+                }
 
     }  
 
 
     //------------- T8 ---------------------------------   
     if ($T8Email != "") {
-    $session_id = $resulttx['data']['session_id'];
-    $message_id = "";
+    $session_id8 = $resulttx['data']['session_id'];
+    $message_id8 = "";
     $param = array();
     $param['priority'] = "1"; // ความสำคัญของ email : 0 = ปกติ , 1 = สูง
     $param['from_name'] = ""; // ชื่อผู้ส่ง หากไม่มี ใส่ค่าว่าง
     $param['from_email'] = ""; // ** อีเมลล์ผู้ส่ง
-    $param['to_name'] = $T8FName." ".$T8LName;; 
+    $param['to_name'] = $T8FName." ".$T8LName;
     $param['to_email'] = $T8Email;
     /* กรณีส่งแบบ TEMPLATE KEY */
     $param['template_key'] = "159026409b53464fa0"; // template id ที่ต้องการส่ง
-    //$param['content_html'] = '{"Firstname":"'.$FName[$i].'","Lastname":"'.$LName[$i].'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
+    $param['content_html'] = '{"Firstname":"'.$T8FName.'","Lastname":"'.$T8LName.'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
     $param['transactional_group_name'] = "MUSTER"; // ชื่อของกลุ่ม transactional ลักษณะคล้ายกับ ชื่อของ campaign
-    $param['message_id'] = genMessageID($message_id);
+    $message_id8= genMessageID($message_id8);
+    $param['message_id'] = $message_id8;
     $param['report_type'] = "False"; // โหมด report จำเป็นต้องใส่ web service ที่ เว็บไซท์ https://app2.taximail.com/app/user/system/ : False = ปิดโหมดรีพอร์ต , Unique = รีพอร์ตเฉพาะข้อมูลที่ ยูนิค , Full = รีพอร์ตทุกข้อมูล
-    $param['session_id'] = $session_id;         
-    $resulttx = sendTransactional($param);
-    $session_id="";
+    $param['session_id'] = $session_id8;         
+    $result8 = sendTransactional($param);
+    $session_id8="";
+    if($result8){ 
+        $tdate8 = date("Y-m-d H:i:s");
+        $status8 = 0;
+        $query8="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T8Email."', '".$message_id8."', '".$status8."', '".$tdate8."')"; 
+        $rs8 = $conn->query($query8);
+                }
+        
 
     }  
     //------------- T9 ---------------------------------   
     if ($T9Email != "") {
-    $session_id = $resulttx['data']['session_id'];
-    $message_id = "";
+    $session_id9 = $resulttx['data']['session_id'];
+    $message_id9 = "";
     $param = array();
     $param['priority'] = "1"; // ความสำคัญของ email : 0 = ปกติ , 1 = สูง
     $param['from_name'] = ""; // ชื่อผู้ส่ง หากไม่มี ใส่ค่าว่าง
     $param['from_email'] = ""; // ** อีเมลล์ผู้ส่ง
-    $param['to_name'] = $T9FName." ".$T9LName;; 
+    $param['to_name'] = $T9FName." ".$T9LName;
     $param['to_email'] = $T9Email;
     /* กรณีส่งแบบ TEMPLATE KEY */
     $param['template_key'] = "159026409b53464fa0"; // template id ที่ต้องการส่ง
-    //$param['content_html'] = '{"Firstname":"'.$FName[$i].'","Lastname":"'.$LName[$i].'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
+    $param['content_html'] = '{"Firstname":"'.$T9FName.'","Lastname":"'.$T9LName.'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
     $param['transactional_group_name'] = "MUSTER"; // ชื่อของกลุ่ม transactional ลักษณะคล้ายกับ ชื่อของ campaign
-    $param['message_id'] = genMessageID($message_id);
+    $message_id9= genMessageID($message_id9);
+    $param['message_id'] = $message_id9;
+
     $param['report_type'] = "False"; // โหมด report จำเป็นต้องใส่ web service ที่ เว็บไซท์ https://app2.taximail.com/app/user/system/ : False = ปิดโหมดรีพอร์ต , Unique = รีพอร์ตเฉพาะข้อมูลที่ ยูนิค , Full = รีพอร์ตทุกข้อมูล
-    $param['session_id'] = $session_id;         
-    $resulttx = sendTransactional($param);
-    $session_id="";
+    $param['session_id'] = $session_id9;         
+    $result9 = sendTransactional($param);
+    $session_id9="";
+    if($result9){ 
+        $tdate9 = date("Y-m-d H:i:s");
+        $status9 = 0;
+        $query9="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T9Email."', '".$message_id9."', '".$status9."', '".$tdate9."')"; 
+        $rs9 = $conn->query($query9);
+                }
 
     }  
 
@@ -484,23 +557,37 @@ $resulttx = Login();
 
     //------------- T10 ---------------------------------   
     if ($T10Email != "") {
-       $session_id = $resulttx['data']['session_id'];
-       $message_id = "";
+       $session_id10 = $resulttx['data']['session_id'];
+       $message_id10 = "";
        $param = array();
        $param['priority'] = "1"; // ความสำคัญของ email : 0 = ปกติ , 1 = สูง
        $param['from_name'] = ""; // ชื่อผู้ส่ง หากไม่มี ใส่ค่าว่าง
        $param['from_email'] = ""; // ** อีเมลล์ผู้ส่ง
-       $param['to_name'] = $T10FName." ".$T10LName;; 
+       $param['to_name'] = $T10FName." ".$T10LName;
        $param['to_email'] = $T10Email;
        /* กรณีส่งแบบ TEMPLATE KEY */
        $param['template_key'] = "159026409b53464fa0"; // template id ที่ต้องการส่ง
-       //$param['content_html'] = '{"Firstname":"'.$FName[$i].'","Lastname":"'.$LName[$i].'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
+       $param['content_html'] = '{"Firstname":"'.$T10FName.'","Lastname":"'.$T10LName.'"}'; // ค่าของ custom field ที่ต้องการ replace ใน template ในรูปแบบ json
        $param['transactional_group_name'] = "MUSTER"; // ชื่อของกลุ่ม transactional ลักษณะคล้ายกับ ชื่อของ campaign
-       $param['message_id'] = genMessageID($message_id);
+       $message_id10= genMessageID($message_id10);
+       $param['message_id'] = $message_id10;
+
        $param['report_type'] = "False"; // โหมด report จำเป็นต้องใส่ web service ที่ เว็บไซท์ https://app2.taximail.com/app/user/system/ : False = ปิดโหมดรีพอร์ต , Unique = รีพอร์ตเฉพาะข้อมูลที่ ยูนิค , Full = รีพอร์ตทุกข้อมูล
-       $param['session_id'] = $session_id;         
-       $resulttx = sendTransactional($param);
-       $session_id="";
+       $param['session_id'] = $session_id10;         
+       $result10 = sendTransactional($param);
+       $session_id10="";
+
+         if($result10){ 
+          $tdate10 = date("Y-m-d H:i:s");
+          $status10 = 0;
+          $query10="INSERT TO `".$tbtaximaillog."` (`regis_id`, `email`, `message_id`, `status`, `tdatetime`) VALUES('".$regis_id."', '".$T10Email."', '".$message_id10."', '".$status10."', '".$tdate10."')"; 
+          $rs10 = $conn->query($query10);
+                 }
+
+
+
+
+
      }
  
 
