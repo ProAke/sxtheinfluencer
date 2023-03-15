@@ -134,14 +134,14 @@ while( $line = $result->fetch_assoc()){
     $tpl->assign("id", $line['id']);
     for($i=1;$i<=10;$i++){
         $tpl->newBlock("TEAM");
-        $tpl->assign("T".$i."FName", $line['T'.$i.'FName']);
-        $tpl->assign("T".$i."LName", $line['T'.$i.'LName']);
-        $tpl->assign("T".$i."NickName", $line['T'.$i.'NickName']);
-        $tpl->assign("T".$i."Bdate", $line['T'.$i.'Bdate']);
-        $tpl->assign("T".$i."Phone", $line['T'.$i.'Phone']);
-        $tpl->assign("T".$i."FB", $line['T'.$i.'FB']);
-        $tpl->assign("T".$i."Email", $line['T'.$i.'Email']);
-        $tpl->assign("T".$i."JobDescription", $line['T'.$i.'JobDescription']);
+        $tpl->assign("FName", $line['T'.$i.'FName']);
+        $tpl->assign("LName", $line['T'.$i.'LName']);
+        $tpl->assign("NickName", $line['T'.$i.'NickName']);
+        $tpl->assign("Bdate", $line['T'.$i.'Bdate']);
+        $tpl->assign("Phone", $line['T'.$i.'Phone']);
+        $tpl->assign("FBUrl", $line['T'.$i.'FB']);
+        $tpl->assign("Email", $line['T'.$i.'Email']);
+        $tpl->assign("JobDescription", $line['T'.$i.'JobDescription']);
     }
 
 
