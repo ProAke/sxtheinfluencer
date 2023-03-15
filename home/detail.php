@@ -133,18 +133,22 @@ while( $line = $result->fetch_assoc()){
     $tpl->assign("RegisterDate", $line['created_at']);
     $tpl->assign("id", $line['id']);
     for($i=1;$i<=10;$i++){
-        $tpl->newBlock("TEAM");
 
-        $tpl->assign("No", $i);
-        $tpl->assign("FName", $line['T'.$i.'FName']);
-        $tpl->assign("LName", $line['T'.$i.'LName']);
-        $tpl->assign("NickName", $line['T'.$i.'NickName']);
-        $tpl->assign("Bdate", $line['T'.$i.'Bdate']);
-        $tpl->assign("Phone", $line['T'.$i.'Phone']);
-        $tpl->assign("FBUrl", $line['T'.$i.'FB']);
-        $tpl->assign("Email", $line['T'.$i.'Email']);
-        $tpl->assign("JobDescription", $line['T'.$i.'JobDescription']);
-        $cardphoto .= "<img src='".$line['T'.$i.'CardUpload']."' width='100%'>\n";
+
+        if($line['T'.$i.'FName'] == ""){
+            $tpl->newBlock("TEAM");
+            $tpl->assign("No", $i);
+            $tpl->assign("FName", $line['T'.$i.'FName']);
+            $tpl->assign("LName", $line['T'.$i.'LName']);
+            $tpl->assign("NickName", $line['T'.$i.'NickName']);
+            $tpl->assign("Bdate", $line['T'.$i.'Bdate']);
+            $tpl->assign("Phone", $line['T'.$i.'Phone']);
+            $tpl->assign("FBUrl", $line['T'.$i.'FB']);
+            $tpl->assign("Email", $line['T'.$i.'Email']);
+            $tpl->assign("JobDescription", $line['T'.$i.'JobDescription']);
+            $cardphoto .= "<img src='".$line['T'.$i.'CardUpload']."' width='100%'>\n";
+        }
+
     }
 
 
