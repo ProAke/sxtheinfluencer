@@ -142,12 +142,13 @@ while( $line = $result->fetch_assoc()){
         $tpl->assign("FBUrl", $line['T'.$i.'FB']);
         $tpl->assign("Email", $line['T'.$i.'Email']);
         $tpl->assign("JobDescription", $line['T'.$i.'JobDescription']);
+        $cardphoto .= "<img src='".$line['T'.$i.'CardUpload']."' width='100%'>\n";
     }
 
 
 }
 
-
+$tpl->assign("_ROOT.CardPhoto", $cardphoto);
 $tpl->assign("_ROOT.Powerby", $Powerby);
 $tpl->assign("_ROOT.Copyright", $Copyright);
 $tpl->printToScreen();
