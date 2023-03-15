@@ -132,8 +132,10 @@ while( $line = $result->fetch_assoc()){
     $tpl->assign("ProjectName", $line['ProjectName']);
     $tpl->assign("RegisterDate", $line['created_at']);
     $tpl->assign("id", $line['id']);
-    for($i=1;$i<=10;$i++){
+    for($i=0;$i<=9;$i++){
         $tpl->newBlock("TEAM");
+
+        $tpl->assign("No", $i);
         $tpl->assign("FName", $line['T'.$i.'FName']);
         $tpl->assign("LName", $line['T'.$i.'LName']);
         $tpl->assign("NickName", $line['T'.$i.'NickName']);
