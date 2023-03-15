@@ -135,7 +135,7 @@ while( $line = $result->fetch_assoc()){
     for($i=1;$i<=10;$i++){
 
 
-        if($line['T'.$i.'FName'] == ""){
+        if($line['T'.$i.'FName'] != ""){
             $tpl->newBlock("TEAM");
             $tpl->assign("No", $i);
             $tpl->assign("FName", $line['T'.$i.'FName']);
