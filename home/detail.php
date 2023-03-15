@@ -133,87 +133,20 @@ while( $line = $result->fetch_assoc()){
     $tpl->assign("RegisterDate", $line['created_at']);
     $tpl->assign("id", $line['id']);
 
-
-    if($line['T1FName'])!=""){
-    $tpl->newBlock("DATA1");
-    $tpl->assign("T1FName", $line['T1FName']);
-    $tpl->assign("T1LName", $line['T1LName']);
-    $tpl->assign("T1NickName", $line['T1NickName']);
-    $tpl->assign("T1Bdate", $line['T1Bdate']);
-    $tpl->assign("T1Phone", $line['T1Phone']);
-    $tpl->assign("T1FB", $line['T1FB']);
-    $tpl->assign("T1Email", $line['T1Email']);
-    $tpl->assign("T1JobDescription", $line['T1JobDescription']);
-    $tpl->assign("T1CardUpload", $line['T1CardUpload']);
-}
-
-    if($line['T2FName'])!=""){
-        $tpl->newBlock("DATA2");
-        $tpl->assign("T2FName", $line['T2FName']);
-        $tpl->assign("T2LName", $line['T2LName']);
-        $tpl->assign("T2NickName", $line['T2NickName']);
-        $tpl->assign("T2Bdate", $line['T2Bdate']);
-        $tpl->assign("T2Phone", $line['T2Phone']);
-        $tpl->assign("T2FB", $line['T2FB']);
-        $tpl->assign("T2Email", $line['T2Email']);
+    for($i=1;$i<=10;$i++){
+        $tpl->newBlock("TEAM");
+        $tpl->assign("T".$i."FName", $line['T'.$i.'FName']);
+        $tpl->assign("T".$i."LName", $line['T'.$i.'LName']);
+        $tpl->assign("T".$i."NickName", $line['T'.$i.'NickName']);
+        $tpl->assign("T".$i."Bdate", $line['T'.$i.'Bdate']);
+        $tpl->assign("T".$i."Phone", $line['T'.$i.'Phone']);
+        $tpl->assign("T".$i."FB", $line['T'.$i.'FB']);
+        $tpl->assign("T".$i."Email", $line['T'.$i.'Email']);
+        $tpl->assign("T".$i."JobDescription", $line['T'.$i.'JobDescription']);
     }
-
-    if($line['T3FName'])!=""){
-
-    $tpl->newBlock("DATA3");
-    $tpl->assign("T3FName", $line['T3FName']);
-    $tpl->assign("T3LName", $line['T3LName']);
-    $tpl->assign("T3NickName", $line['T3NickName']);
-    $tpl->assign("T3Bdate", $line['T3Bdate']);
-    $tpl->assign("T3Phone", $line['T3Phone']);
-    $tpl->assign("T3FB", $line['T3FB']);
-    $tpl->assign("T3Email", $line['T3Email']);
-    $tpl->assign("T3JobDescription", $line['T3JobDescription']);
-    $tpl->assign("T3CardUpload", $line['T3CardUpload']);
-
-
-
-    } 
-
-    if($line['T4FName'])!=""){
-
-    $tpl->newBlock("DATA4");
-    $tpl->assign("T4FName", $line['T4FName']);
-    $tpl->assign("T4LName", $line['T4LName']);
-    $tpl->assign("T4NickName", $line['T4NickName']);
-    $tpl->assign("T4Bdate", $line['T4Bdate']);
-    $tpl->assign("T4Phone", $line['T4Phone']);
-    $tpl->assign("T4FB", $line['T4FB']);
-    $tpl->assign("T4Email", $line['T4Email']);
-    $tpl->assign("T4JobDescription", $line['T4JobDescription']);
-    $tpl->assign("T4CardUpload", $line['T4CardUpload']);
-
-    }
-
-    if($line['T5FName'])!=""){
-    $tpl->assign("T5FName", $line['T5FName']);
-    $tpl->assign("T5LName", $line['T5LName']);
-    $tpl->newBlock("DATA5");
-
-    $tpl->assign("T5NickName", $line['T5NickName']);
-    $tpl->assign("T5Bdate", $line['T5Bdate']);
-    $tpl->assign("T5Phone", $line['T5Phone']);
-    $tpl->assign("T5FB", $line['T5FB']);
-    $tpl->assign("T5Email", $line['T5Email']);
-    $tpl->assign("T5JobDescription", $line['T5JobDescription']);
-    $tpl->assign("T5CardUpload", $line['T5CardUpload']);
-
-
-    }
-
-
 
 
 }
-
-
-
-
 
 
 $tpl->assign("_ROOT.Powerby", $Powerby);
