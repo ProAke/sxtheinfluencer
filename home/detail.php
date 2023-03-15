@@ -127,12 +127,11 @@ $query = "SELECT * FROM `".$tbAppform."` WHERE `id`='".$_GET['id']."'";
 $result = $conn->query($query);
 while( $line = $result->fetch_assoc()){
     $tpl->newBlock("DATA");
-    $tpl->assign("datas", $line['datas']);
+   
     $tpl->assign("TeamName", $line['TeamName']);
     $tpl->assign("ProjectName", $line['ProjectName']);
     $tpl->assign("RegisterDate", $line['created_at']);
     $tpl->assign("id", $line['id']);
-
     for($i=1;$i<=10;$i++){
         $tpl->newBlock("TEAM");
         $tpl->assign("T".$i."FName", $line['T'.$i.'FName']);
