@@ -60,6 +60,7 @@
                                     <table class="table table-vcenter">
                                         <thead>
                                             <tr>
+                                                <th></th>
                                                 <th>ชื่อผลงาน / ชื่อทีม</th>
                                                 <th>ทีมงาน</th>
                                                 <th>วันที่ส่งงาน</th>
@@ -69,7 +70,7 @@
 
                                         <!-- START BLOCK : DATA -->
                                         <tr>
-                                            
+                                            <td class="text-muted"><a href="?action=delete&id={id}" class="btn btn-sm btn-danger">{id}</a></td>
                                             <td class="text-muted">ผลงาน : {ProjectName}<br>
                                                                    ชื่อทีม : {TeamName}</td>
                                             <td class="text-muted">{AllTeam}</td>
