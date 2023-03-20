@@ -9,6 +9,7 @@ if($result['status'] == 'success'){
 $T1FName = $_GET['fname'];
 $T1LName = $_GET['lname'];
 $T1Email = $_GET['email'];
+$url = $_SERVER["HTTP_REFERER"];
 
 
 
@@ -47,8 +48,10 @@ $T1Email = $_GET['email'];
 	$result = sendTransactional($param);
   
 //----------------------------------------------
-	echo json_encode($result); 
-    $session_id="";
+	//echo json_encode($result); 
+    //$session_id="";
+     header("Location: $url");
+     exit();
 
     }
 
