@@ -45,7 +45,7 @@ if($_GET['action'] == "delete" && $_GET['id'] != ""){
 
 
 
-$query = "SELECT * FROM `tb_app_form` WHERE `status`='0' ORDER BY `created_at` DESC LIMIT 0,1000";
+$query = "SELECT * FROM `tb_app_form` WHERE `status`='0' ORDER BY `created_at` ASC LIMIT 0,1000";
 $result = $conn->query($query);
 while( $line = $result->fetch_assoc()){
     $tpl->newBlock("DATA");
